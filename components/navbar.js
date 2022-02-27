@@ -38,14 +38,13 @@ function navbar() {
 												Home
 											</div>
 										</a>
-									</Link>
 
+									</Link>
 										<a>
 											<div className="text-black font-semibold px-3 py-2 text-md hover:font-black"> 
 												BestNew007
 											</div>
 										</a>
-
 
 									<Link href="/login">
 										<a>
