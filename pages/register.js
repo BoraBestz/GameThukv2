@@ -1,15 +1,14 @@
 import Navbar from "../components/navbar";
 import  Link  from "next/link";
 
-function login() {
+function register() {
     return (
-      <div className='h-screen flex bg-gray-bg1'>
+        <div className='h-screen flex bg-gray-bg1'>
         <Navbar/>
             <div className='w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
                 <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>
-                    เข้าสู่ระบบ 🔐
+                    สมัครสมาชิก 🔐
                 </h1>
-
                 <form >
                     <div>
                         <label htmlFor='email'>Username</label>
@@ -30,6 +29,27 @@ function login() {
                         />
                     </div>
 
+                    <div>
+                        <label htmlFor='confirmPassword'>Confirm Password</label>
+                        <input
+                            type='password'
+                            className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
+                            id='confirmPassword'
+                            placeholder='ยืนยันรหัสผ่าน'
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor='email'>Email </label>
+                        <input
+                            type='email'
+                            className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
+                            id='email'
+                            placeholder='อีเมล์'
+                        />
+                    </div>
+
+
                     <div className='flex justify-center items-center mt-6'>
                         <button
                             className={`bg-blue-600 py-2 px-6 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
@@ -37,22 +57,12 @@ function login() {
                             ยืนยัน
                         </button>
                     </div>
-
-                    <Link href="/register">
-                    <div className='text-right mt-1'>
-                        <label
-                            className={`cursor-pointer italic py-2 px-6 text-sm text-blue-600 `}
-                        >
-                            ไม่มีบัญชี? กดสมัครสมาชิกที่นี่
-                        </label>
-                    </div>
-                    </Link>
-                    
-
-                </form>
+                    </form>
             </div>
         </div>
+
+        
     )
-  }
-  
-  export default login;
+}
+
+export default register;

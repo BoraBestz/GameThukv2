@@ -11,9 +11,14 @@ function navbar() {
 						<div className="flex items-center  mx-20  justify-between w-full">
 							<div className="flex justify-center items-center flex-shrink-0 ">
 								<h1 className=" font-bold text-xl cursor-pointer">
+									<Link href="/">
+									<a>
 									Game<span className="text-blue-500">Thuk</span>
+									</a>
+									</Link>
 								</h1>
 							</div>
+				
 							<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
 								<div class="flex items-center justify-center">
 									<div class="flex border-2 rounded">
@@ -35,11 +40,21 @@ function navbar() {
 									<Link href="/">
 										<a>
 											<div className="cursor-pointer text-blue-600 font-semibold px-3 py-2 text-md hover:font-black"> 
-												Home
+												หน้าแรก
 											</div>
 										</a>
 
 									</Link>
+
+									<Link href="/favorite">
+										<a>
+											<div className="cursor-pointer text-blue-600 font-semibold px-3 py-2 text-md hover:font-black"> 
+												ติดตามเกม
+											</div>
+										</a>
+
+									</Link>
+
 										<a>
 											<div className="text-black font-semibold px-3 py-2 text-md hover:font-black"> 
 												BestNew007
@@ -49,7 +64,7 @@ function navbar() {
 									<Link href="/login">
 										<a>
 											<div className="cursor-pointer bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black"> 
-												Login
+												เข้าสู่ระบบ
 											</div>
 										</a>
 									</Link>

@@ -1,11 +1,9 @@
-import React from "react";
+import Navbar from "./navbar";
 
 function homepage() {
 	return (
-		<div className="flex justify-center items-center flex-col pt-40 text-center font-bold lg:text-8xl text-6xl space-y-2">
-			<div className="">
-				<h1 className="text-center">Test </h1>
-			</div>
+		<div className="flex justify-center items-center flex-col pt-40 text-center font-bold lg:text-4xl text-5xl space-y-2">
+				<h1 className="text-center">รายชื่อเกม 100 เกม </h1>
 		</div>
 	);
 }
