@@ -1,7 +1,36 @@
 import Navbar from "../components/navbar";
 import  Link  from "next/link";
+import React, { useState } from "react";
+import Axios from "axios";
 
 function register() {
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [conpassword, setConpassword] = useState("");
+    const [email, setEmail] = useState("");
+
+    const [userdataList, setUserdataList] = useState([]);
+
+    const addUserdata = () => {
+        Axios.post("http://localhost:3001/user_data", {
+          username: username,
+          password: password,
+          conpassword: conpassword,
+          email: email
+        }).then(() => {
+          setUserdataList([
+            ...userdataList,
+            {
+                username: username,
+                password: password,
+                conpassword: conpassword,
+                email: email
+            }
+          ]);
+        });
+      };
+
     return (
         <div className='h-screen flex bg-gray-bg1'>
         <Navbar/>
@@ -11,12 +40,15 @@ function register() {
                 </h1>
                 <form >
                     <div>
-                        <label htmlFor='email'>Username</label>
+                        <label htmlFor='username'>Username</label>
                         <input
                             type='text'
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
-                            id='email'
+                            id='username'
                             placeholder='ชื่อผู้ใช้'
+                            onChange={(event) => {
+                                setUsername(event.target.value)
+                              }}
                         />
                     </div>
                     <div>
@@ -26,6 +58,9 @@ function register() {
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
                             id='password'
                             placeholder='รหัสผ่าน'
+                            onChange={(event) => {
+                                setPassword(event.target.value)
+                              }}
                         />
                     </div>
 
@@ -36,6 +71,9 @@ function register() {
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
                             id='confirmPassword'
                             placeholder='ยืนยันรหัสผ่าน'
+                            onChange={(event) => {
+                                setConpassword(event.target.value)
+                              }}
                         />
                     </div>
 
@@ -45,7 +83,10 @@ function register() {
                             type='email'
                             className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
                             id='email'
-                            placeholder='อีเมล์'
+                            placeholder='อีเมล'
+                            onChange={(event) => {
+                                setEmail(event.target.value)
+                              }}
                         />
                     </div>
 
@@ -53,6 +94,7 @@ function register() {
                     <div className='flex justify-center items-center mt-6'>
                         <button
                             className={`bg-blue-600 py-2 px-6 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
+                            onClick={addUserdata}
                         >
                             ยืนยัน
                         </button>

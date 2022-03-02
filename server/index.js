@@ -23,25 +23,24 @@ app.get("/games_data", (req, res) => {
     });
 });
 
-// app.post("/create", (req, res) => {
-//   const name = req.body.name;
-//   const age = req.body.age;
-//   const country = req.body.country;
-//   const position = req.body.position;
-//   const wage = req.body.wage;
+app.post("/user_data", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+  const conpassword = req.body.conpassword;
+  const email = req.body.email;
 
-//   db.query(
-//     "INSERT INTO employees (name, age, country, position, wage) VALUES (?,?,?,?,?)",
-//     [name, age, country, position, wage],
-//     (err, result) => {
-//       if (err) {
-//         console.log(err);
-//       } else {
-//         res.send("Values Inserted");
-//       }
-//     }
-//   );
-// });
+  db.query(
+    "INSERT INTO user_data (username, password, conpassword, email) VALUES (?,?,?,?)",
+    [username, password, conpassword, email],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Values Inserted");
+      }
+    }
+  );
+});
 
 // app.put("/update", (req, res) => {
 //   const id = req.body.id;
