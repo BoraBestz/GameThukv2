@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 });
 
 app.get("/games_data", (req, res) => {
-    db.query("SELECT * FROM games_data", (err, result) => {
+    db.query("SELECT gd.game_id,gd.game_name,gm.game_image FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id)", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -22,6 +22,16 @@ app.get("/games_data", (req, res) => {
       }
     });
 });
+
+// app.get("/games_data", (req, res) => {
+//   db.query("SELECT * FROM games_data", (err, result) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       res.send(result);
+//     }
+//   });
+// });
 
 app.get("/games_media", (req, res) => {
   db.query("SELECT * FROM games_media", (err, result) => {
