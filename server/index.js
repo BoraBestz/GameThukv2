@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 });
 
 app.get("/games_data", (req, res) => {
-    db.query("SELECT gd.game_id,gd.game_name,gm.game_image FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id)", (err, result) => {
+    db.query("SELECT gd.game_id,gd.game_name,gm.game_image,pc.now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id)", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -35,6 +35,16 @@ app.get("/games_data", (req, res) => {
 
 app.get("/games_media", (req, res) => {
   db.query("SELECT * FROM games_media", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/games_price_home", (req, res) => {
+  db.query("SELECT pc.game_id,pc.now_price FROM price_check pc INNER JOIN games_data gd on (gd.game_id = pc.game_id", (err, result) => {
     if (err) {
       console.log(err);
     } else {

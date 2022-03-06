@@ -4,7 +4,6 @@ import Axios from "axios";
 import Link from "next/link";
 
 function homepage() {
-
   const [gamesdataList, setGamesdataList] = useState([]);
   const getGamesdata = () => {
     Axios.get("http://localhost:3001/games_data").then((response) => {
@@ -13,7 +12,9 @@ function homepage() {
   };
 
   return (
+    
     <div className="flex justify-center items-center flex-col pt-40 text-center font-bold lg:text-4xl text-5xl space-y-2">
+      
       <h1 className="text-center">รายชื่อเกม 100 เกม </h1>
       <button
         class="flex items-center justify-center px-4 border-l"
@@ -30,19 +31,18 @@ function homepage() {
       </button>
 
       <br></br>
-      
+
       {gamesdataList.map((val, key) => {
         return (
           <div className="gamesdata card">
             <div className="card-body text-left">
               <Link href="/gameprice">
                 <a>
-                <img   
-                    src={val.game_image}
-                    alt="new"
-                  />
-                  <p className="card-text">Name: {val.game_name}</p>
-                  
+                  <p className="card-text">
+                    {" "}
+                    {val.game_name} <img src={val.game_image} alt="new" />
+                    {val.now_price} บาท
+                  </p>
                 </a>
               </Link>
               <br></br>
@@ -50,7 +50,6 @@ function homepage() {
           </div>
         );
       })}
-      
     </div>
   );
 }

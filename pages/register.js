@@ -13,7 +13,9 @@ function register() {
     const [userdataList, setUserdataList] = useState([]);
 
     const addUserdata = () => {
-        Axios.post("http://localhost:3001/user_data", {
+        if (password == conpassword && username.length > 0 && password.length > 0 && conpassword.length > 0 && email.length > 0){
+            
+            Axios.post("http://localhost:3001/user_data", {
           username: username,
           password: password,
           conpassword: conpassword,
@@ -29,6 +31,14 @@ function register() {
             }
           ]);
         });
+        alert("สมัครสมาชิกสำเร็จ!");
+        }
+        else if (password != conpassword) {
+            alert("กรอกรหัสผ่านและรหัสผ่านยืนยันให้ตรงกัน");
+        }
+        else {
+            alert("กรอกข้อมูลให้ครบถ้วน");
+        }
       };
 
     return (

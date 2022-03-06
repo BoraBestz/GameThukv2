@@ -5,7 +5,7 @@ import  Link  from "next/link";
 function navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
-			<nav className=" shadow-sm fixed w-full z-10">
+			<nav className=" bg-blue-50 shadow-sm fixed w-full z-10">
 				<div className="w-full">
 					<div className="flex items-center h-20 w-full">
 						<div className="flex items-center  mx-20  justify-between w-full">
@@ -23,7 +23,7 @@ function navbar() {
 								<div class="flex items-center justify-center">
 									<div class="flex border-2 rounded">
 										<input type="text" class="px-4 py-2 w-80" placeholder="ค้นหา..."></input>
-										<button class="flex items-center justify-center px-4 border-l">
+										<button class="bg-white flex items-center justify-center px-4 border-l">
 											<svg class="w-6 h-6 text-gray-600" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
 												viewBox="0 0 24 24">
 												<path
