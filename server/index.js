@@ -23,6 +23,16 @@ app.get("/games_data", (req, res) => {
     });
 });
 
+app.get("/games_media", (req, res) => {
+  db.query("SELECT * FROM games_media", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.post("/user_data", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
