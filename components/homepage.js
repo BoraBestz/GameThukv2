@@ -41,7 +41,8 @@ function homepage() {
                   <p className="card-text">
                     {" "}
                     {val.game_name} <img src={val.game_image} alt="new" />
-                    {val.now_price} บาท
+                    <div className="text-2xl">ราคาถูกสุด {val.now_price} บาท
+                      </div>
                   </p>
                 </a>
               </Link>

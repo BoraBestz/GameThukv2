@@ -14,7 +14,7 @@ const db = mysql.createConnection({
 });
 
 app.get("/games_data", (req, res) => {
-    db.query("SELECT gd.game_id,gd.game_name,gm.game_image,pc.now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id)", (err, result) => {
+    db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) group by gd.game_id", (err, result) => {
       if (err) {
         console.log(err);
       } else {
