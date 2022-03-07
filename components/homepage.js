@@ -13,9 +13,8 @@ function homepage() {
 
   return (
     
-    <div className="flex justify-center items-center flex-col pt-40 text-center font-bold lg:text-4xl text-5xl space-y-2">
-      
-      <h1 className="text-center">รายชื่อเกม 100 เกม </h1>
+    <div className="bg-purple-100 flex justify-center items-center flex-col pt-40 text-center font-bold lg:text-4xl text-5xl space-y-2"> รายชื่อเกม 100 เกม
+    
       <button
         class="flex items-center justify-center px-4 border-l"
         onClick={getGamesdata}
@@ -34,19 +33,20 @@ function homepage() {
 
       {gamesdataList.map((val, key) => {
         return (
-          <div className="gamesdata card">
-            <div className="card-body text-left">
+          <div className="grid grid-cols-30 gap-20">
+            <div className="bg-blue-300 p-3 rounded"> 
               <Link href="/gameprice">
                 <a>
-                  <p className="card-text">
-                    {" "}
-                    {val.game_name} <img src={val.game_image} alt="new" />
-                    <div className="text-2xl">ราคาถูกสุด {val.now_price} บาท
+                  <p className="text-3xl">
+                    {val.game_name} <img width= "500" height = "500" src={val.game_image} alt="new" />
+                    <div className="text-2xl">ราคาถูกสุด 
+                      </div>
+                      <div className="text-1xl">
+                      {val.now_price} บาท
                       </div>
                   </p>
                 </a>
               </Link>
-              <br></br>
             </div>
           </div>
         );

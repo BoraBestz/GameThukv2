@@ -13,6 +13,7 @@ const db = mysql.createConnection({
   database: "bovesv3pjmkwzex5",
 });
 
+//listgamename picture price
 app.get("/games_data", (req, res) => {
     db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) group by gd.game_id", (err, result) => {
       if (err) {
@@ -33,6 +34,7 @@ app.get("/games_data", (req, res) => {
 //   });
 // });
 
+//listpicturegame
 app.get("/games_media", (req, res) => {
   db.query("SELECT * FROM games_media", (err, result) => {
     if (err) {
@@ -43,6 +45,7 @@ app.get("/games_media", (req, res) => {
   });
 });
 
+//listpricegame
 app.get("/games_price_home", (req, res) => {
   db.query("SELECT pc.game_id,pc.now_price FROM price_check pc INNER JOIN games_data gd on (gd.game_id = pc.game_id", (err, result) => {
     if (err) {
@@ -53,6 +56,22 @@ app.get("/games_price_home", (req, res) => {
   });
 });
 
+//searchgame
+app.get("/search/:gameName", (req,res) => {
+  const gameName = req.params.gameName;
+  console.log(gameName)
+  db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"' group by gd.game_id ",
+   [gameName],
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+//register
 app.post("/user_data", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
