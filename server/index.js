@@ -97,6 +97,7 @@ app.post("/login", (req, res) =>{
 
       if (result.length > 0){
         res.send(result);
+        console.log(result)
       } else {
         res.send({massage:"Wrong username/password"});
       }

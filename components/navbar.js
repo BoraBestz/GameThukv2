@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import Axios from "axios";
+import Homepage from "../components/homepage";
 
 function navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +19,15 @@ function navbar() {
     }
   };
 
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const gameName = this.getGameName.value;
+  //   const data = {
+  //     id: new Date(),
+  //     gameName
+  //   }
+  // }
+
   return (
     <nav className=" bg-blue-50 shadow-sm fixed w-full z-10">
       <div className="w-full">
@@ -33,13 +43,13 @@ function navbar() {
               </h1>
             </div>
 
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div class="flex items-center justify-center">
-                <div class="flex border-2 rounded">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div className="flex items-center justify-center">
+                <div className="flex border-2 rounded">
                   <form>
                     <input
-                      type="search"
-                      class="px-4 py-2 w-80"
+                      type="text" 
+                      className="px-4 py-2 w-80"
                       placeholder="ค้นหา..."
                       onChange={(event) => {
                         setgameName(event.target.value);
@@ -48,11 +58,11 @@ function navbar() {
                   </form>
 
                   <button
-                    class="bg-white flex items-center justify-center px-4 border-l"
+                    className="bg-white flex items-center justify-center px-4 border-l"
                     onClick={getGamesdata}
                   >
                     <svg
-                      class="w-6 h-6 text-gray-600"
+                      className="w-6 h-6 text-gray-600"
                       fill="currentColor"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -98,16 +108,14 @@ function navbar() {
               </div>
               {gamesdataList.map((val, key) => {
                 return (
-                  <div className="grid grid-cols-30 gap-20">
+                  <div className="grid grid-cols-30 gap-20" key={key}> 
                     <div className="bg-blue-300 p-3 rounded">
                       <Link href="/gameprice">
-                        <a>
-                          <p className="text-3xl">
+                          <a className="text-3xl">
                             {val.game_name}{" "}
                             <img src={val.game_image} alt="new" />
                             <div className="text-2xl">ราคาถูกสุด</div>
                             <div className="text-1xl">{val.now_price} บาท</div>
-                          </p>
                         </a>
                       </Link>
                     </div>

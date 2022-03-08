@@ -1,9 +1,9 @@
-import Navbar from "./navbar";
+import navbar from "./navbar";
 import { useState } from "react";
 import Axios from "axios";
 import Link from "next/link";
 
-function homepage() {
+function homepage(props) {
   const [gamesdataList, setGamesdataList] = useState([]);
   const getGamesdata = () => {
     Axios.get("http://localhost:3001/games_data").then((response) => {
@@ -16,11 +16,11 @@ function homepage() {
     <div className="bg-purple-100 flex justify-center items-center flex-col pt-40 text-center font-bold lg:text-4xl text-5xl space-y-2"> รายชื่อเกม 100 เกม
     
       <button
-        class="flex items-center justify-center px-4 border-l"
+        className="flex items-center justify-center px-4 border-l"
         onClick={getGamesdata}
       >
         <svg
-          class="w-6 h-6 text-gray-600"
+          className="w-6 h-6 text-gray-600"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -33,19 +33,17 @@ function homepage() {
 
       {gamesdataList.map((val, key) => {
         return (
-          <div className="grid grid-cols-30 gap-20">
+          <div className="grid grid-cols-30 gap-20 " key={key} >
             <div className="bg-blue-300 p-3 rounded"> 
               <Link href="/gameprice">
-                <a>
-                  <p className="text-3xl">
+                  <a className="text-3xl">
                     {val.game_name} <img width= "500" height = "500" src={val.game_image} alt="new" />
                     <div className="text-2xl">ราคาถูกสุด 
                       </div>
                       <div className="text-1xl">
                       {val.now_price} บาท
                       </div>
-                  </p>
-                </a>
+                  </a>
               </Link>
             </div>
           </div>

@@ -10,7 +10,8 @@ function login() {
     const [loginStatus, setLoginStatus] = useState("");
 
     const login = () => {
-        Axios.post("http://localhost:3001/login", {
+        if (username.length > 0 && password.length > 0 ) {
+            Axios.post("http://localhost:3001/login", {
             username: username,
             password: password,
         }).then((response) => {
@@ -19,7 +20,20 @@ function login() {
             }else {
                 setLoginStatus(response.data[0].username);
             }
+
         });
+        
+        }
+        else if (username.length == 0 && password.length > 0){
+            alert("กรุณากรอก username ")
+        }
+        else if (username.length > 0 && password.length == 0){
+            alert("กรุณากรอก password ")
+        }
+        else{
+            alert("กรุณากรอก username และ password ")
+        }
+        
     };
 
     return (
@@ -65,8 +79,8 @@ function login() {
                         </button>
                     </div>
                     
-                    <h1>{loginStatus}</h1> 
-                    <h1>Test Massage</h1>     
+
+                    <h1>{loginStatus}</h1>     
 
                     <Link href="/register">
                     <div className='text-right mt-1'>

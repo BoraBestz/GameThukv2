@@ -10,6 +10,7 @@ function favorite() {
       setGamesdataList(response.data);
     });
   };
+  
     
     return (
         

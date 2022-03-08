@@ -1,6 +1,12 @@
 import Head from "next/head";
 import Homepage from "../components/homepage";
 import Navbar from "../components/navbar";
+import { createStore } from 'redux'
+import postReducer from "../reducers/postReducer";
+import { Provider } from 'react-redux'
+
+const store = createStore(postReducer);
+
 
 export default function Home() {
 	return (
