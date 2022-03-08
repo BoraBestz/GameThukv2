@@ -15,7 +15,7 @@ function register() {
     const addUserdata = () => {
         if (password == conpassword && username.length > 0 && password.length > 0 && conpassword.length > 0 && email.length > 0){
             
-            Axios.post("http://localhost:3001/user_data", {
+            Axios.post("http://localhost:3001/register", {
           username: username,
           password: password,
           conpassword: conpassword,

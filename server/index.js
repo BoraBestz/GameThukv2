@@ -12,6 +12,7 @@ const db = mysql.createConnection({
   password: "htf06l6xp0gsgoei",
   database: "bovesv3pjmkwzex5",
 });
+module.exports = mysql;
 
 //listgamename picture price
 app.get("/games_data", (req, res) => {
@@ -23,16 +24,6 @@ app.get("/games_data", (req, res) => {
       }
     });
 });
-
-// app.get("/games_data", (req, res) => {
-//   db.query("SELECT * FROM games_data", (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
 
 //listpicturegame
 app.get("/games_media", (req, res) => {
@@ -72,7 +63,7 @@ app.get("/search/:gameName", (req,res) => {
 });
 
 //register
-app.post("/user_data", (req, res) => {
+app.post("/register", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   const conpassword = req.body.conpassword;
@@ -91,32 +82,27 @@ app.post("/user_data", (req, res) => {
   );
 });
 
-// app.put("/update", (req, res) => {
-//   const id = req.body.id;
-//   const wage = req.body.wage;
-//   db.query(
-//     "UPDATE employees SET wage = ? WHERE id = ?",
-//     [wage, id],
-//     (err, result) => {
-//       if (err) {
-//         console.log(err);
-//       } else {
-//         res.send(result);
-//       }
-//     }
-//   );
-// });
+//login
+app.post("/login", (req, res) =>{
+  const username = req.body.username;
+  const password = req.body.password;
 
-// app.delete("/delete/:id", (req, res) => {
-//   const id = req.params.id;
-//   db.query("DELETE FROM employees WHERE id = ?", id, (err, result) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.send(result);
-//     }
-//   });
-// });
+  db.query(
+    "SELECT * FROM user_data WHERE username = ? AND password = ?",
+    [username, password],
+    (err, result) => {
+      if (err) {
+        res.send({err:err});
+      } 
+
+      if (result.length > 0){
+        res.send(result);
+      } else {
+        res.send({massage:"Wrong username/password"});
+      }
+    }
+  );
+});
 
 app.listen(3001, () => {
     console.log("Yey, your server is running on port 3001");
