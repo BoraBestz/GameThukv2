@@ -22,7 +22,7 @@ function login() {
             
     
             if(response.data.message){
-                setLoginStatus(response.data);
+                setLoginStatus(response.data.message);
             }else {
                 setLoginStatus(response.data[0].username);
             }
@@ -88,7 +88,7 @@ function login() {
                     </div>
                     {/* </Link> */}
 
-                    <h1>test {loginStatus}</h1>     
+                    <h1 className={'bg-red-500'}>{loginStatus}</h1>     
 
                     <Link href="/register">
                     <div className='text-right mt-1'>

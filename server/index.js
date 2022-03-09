@@ -99,8 +99,9 @@ app.post("/login", (req, res) =>{
         res.send(result);
         console.log(result)
       } else {
-        res.send({massage:"Wrong username/password"});
-        console.log("ไม่พบชื่อผู้ใช้หรือรหัสผ่านผิด")
+        // res.send({massage:"Wrong username/password"});
+        res.status(200).json({ message: 'ไม่พบชื่อผู้ใช้หรือรหัสผ่านผิด' })
+        console.log("Wrong username/password")
       }
     }
   );
