@@ -48,7 +48,7 @@ function navbar() {
                 <div className="flex border-2 rounded">
                   <form>
                     <input
-                      type="text" 
+                      type="search" 
                       className="px-4 py-2 w-80"
                       placeholder="ค้นหา..."
                       onChange={(event) => {

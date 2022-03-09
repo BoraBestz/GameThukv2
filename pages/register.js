@@ -32,6 +32,7 @@ function register() {
           ]);
         });
         alert("สมัครสมาชิกสำเร็จ!");
+        document.location.href="/login"
         }
         else if (password != conpassword) {
             alert("กรอกรหัสผ่านและรหัสผ่านยืนยันให้ตรงกัน");

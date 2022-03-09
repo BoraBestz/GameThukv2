@@ -2,21 +2,27 @@ import Navbar from "../components/navbar";
 import  Link  from "next/link";
 import React, { useState } from "react";
 import Axios from "axios";
+import Router from 'next/router'
+
 
 function login() {
+    
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const [loginStatus, setLoginStatus] = useState("");
-
+    
+    
     const login = () => {
         if (username.length > 0 && password.length > 0 ) {
             Axios.post("http://localhost:3001/login", {
             username: username,
             password: password,
         }).then((response) => {
+            
+    
             if(response.data.message){
-                setLoginStatus(response.data.message);
+                setLoginStatus(response.data);
             }else {
                 setLoginStatus(response.data[0].username);
             }
@@ -69,18 +75,20 @@ function login() {
                               }}
                         />
                     </div>
-
+                    
+                    {/* <Link href="/"> */}
+                        
                     <div className='flex justify-center items-center mt-6'>
-                        <button
+                        <button type="button"
                             className={`bg-blue-600 py-2 px-6 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
                             onClick={login}
                         >
                             ยืนยัน
                         </button>
                     </div>
-                    
+                    {/* </Link> */}
 
-                    <h1>{loginStatus}</h1>     
+                    <h1>test {loginStatus}</h1>     
 
                     <Link href="/register">
                     <div className='text-right mt-1'>

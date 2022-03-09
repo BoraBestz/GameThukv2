@@ -100,6 +100,7 @@ app.post("/login", (req, res) =>{
         console.log(result)
       } else {
         res.send({massage:"Wrong username/password"});
+        console.log("ไม่พบชื่อผู้ใช้หรือรหัสผ่านผิด")
       }
     }
   );
