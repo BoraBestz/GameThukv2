@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, createContext, useContext  } from "react";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import Axios from "axios";
 import Homepage from "../components/homepage";
+import SearchGameList from "../pages/searchGameList";
+import UserContext from "./UserContext";
+import { useSelector, useDispatch } from "react-redux";
 
+const GameContext = createContext();
 function navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [gameName, setgameName] = useState("");
   const [gamesdataList, setGamesdataList] = useState([]);
+
+  //เปลี่ยนแปลงค่า store
+  const ditpatch = useDispatch();
+
+  //เข้าถึง store
+  const best = useSelector((state) => ({ ...state }));
+ 
   const getGamesdata = () => {
     if (gameName.length > 0) {
       alert("Searching " + gameName + "...");
@@ -19,17 +30,10 @@ function navbar() {
     }
   };
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const gameName = this.getGameName.value;
-  //   const data = {
-  //     id: new Date(),
-  //     gameName
-  //   }
-  // }
-
+  console.log(best.game)
   return (
     <nav className=" bg-blue-50 shadow-sm fixed w-full z-10">
+
       <div className="w-full">
         <div className="flex items-center h-20 w-full">
           <div className="flex items-center  mx-20  justify-between w-full">
@@ -56,11 +60,13 @@ function navbar() {
                       }}
                     />
                   </form>
-
+                 
                   <button
                     className="bg-white flex items-center justify-center px-4 border-l"
-                    onClick={getGamesdata}
+                    onClick= {getGamesdata}
+                    
                   >
+                    
                     <svg
                       className="w-6 h-6 text-gray-600"
                       fill="currentColor"
@@ -70,6 +76,8 @@ function navbar() {
                       <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
                     </svg>
                   </button>
+                  
+
                 </div>
               </div>
             </div>
@@ -94,7 +102,7 @@ function navbar() {
 
                 <a>
                   <div className="text-black font-semibold px-3 py-2 text-md hover:font-black">
-                    BestNew007
+                    {best.game}
                   </div>
                 </a>
 
@@ -106,7 +114,8 @@ function navbar() {
                   </a>
                 </Link>
               </div>
-              {gamesdataList.map((val, key) => {
+              
+              {/* {gamesdataList.map((val, key) => {
                 return (
                   <div className="grid grid-cols-30 gap-20" key={key}> 
                     <div className="bg-blue-300 p-3 rounded">
@@ -121,7 +130,7 @@ function navbar() {
                     </div>
                   </div>
                 );
-              })}
+              })} */}
             </div>
           </div>
         </div>

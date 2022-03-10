@@ -1,17 +1,14 @@
 import Head from "next/head";
 import Homepage from "../components/homepage";
 import Navbar from "../components/navbar";
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { gameReducer } from '../reducers/gameReducer'
 
-// const store = createStore(gameReducer);
+
 
 
 export default function Home() {
 	return (
 		<div>
-			{/* <Provider store={store}> */}
+
 				
 			<Head>
 				<title>GameThuk</title>
@@ -19,7 +16,7 @@ export default function Home() {
 			</Head>
 			<Navbar />
 			<Homepage />
-			{/* </Provider> */}
+
 			
 
 
