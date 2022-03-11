@@ -4,7 +4,6 @@ import Link from "next/link";
 import Axios from "axios";
 import Homepage from "../components/homepage";
 import SearchGameList from "../pages/searchGameList";
-import UserContext from "./UserContext";
 import { useSelector, useDispatch } from "react-redux";
 
 const GameContext = createContext();

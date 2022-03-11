@@ -3,7 +3,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Axios from "axios";
 import Router from "next/router";
-import UserContext from "../components/UserContext";
 import { useSelector, useDispatch } from "react-redux";
 
 function login() {
