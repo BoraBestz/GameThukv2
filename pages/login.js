@@ -28,7 +28,7 @@ function login() {
         } else {
           setLoginStatus(response.data[0].username);
           ditpatch({
-            type: "LOGOUT",
+            type: "LOGIN",
             payload: username
             
           });

@@ -1,13 +1,11 @@
-
-
-export const gameReducer  = (state = null, action) => {
+export const UserReducer  = (state = null, action) => {
     switch (action.type){
-        case 'SEARCH':
+        case 'LOGIN':
             return action.payload
-        case 'CLICK_GAME':
+        case 'LOGOUT':
             return action.payload
         default:
             return state
     }
 } 
-export default gameReducer;
+export default UserReducer;

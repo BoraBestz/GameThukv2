@@ -1,12 +1,8 @@
 import React, { useState, createContext, useContext  } from "react";
-import { Transition } from "@headlessui/react";
 import Link from "next/link";
 import Axios from "axios";
-import Homepage from "../components/homepage";
-import SearchGameList from "../pages/searchGameList";
 import { useSelector, useDispatch } from "react-redux";
 
-const GameContext = createContext();
 function navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [gameName, setgameName] = useState("");
@@ -25,6 +21,12 @@ function navbar() {
       Axios.get("http://localhost:3001/search/"+gameName, {
       }).then((response) => {
         setGamesdataList(response.data);
+        ditpatch({
+          type: "SEARCH",
+          payload: gameName
+          
+        });
+        // window.location.href = '/searchGameList';
       });
     }
   };
@@ -51,7 +53,7 @@ function navbar() {
                 <div className="flex border-2 rounded">
                   <form>
                     <input
-                      type="search" 
+                      type="text" 
                       className="px-4 py-2 w-80"
                       placeholder="ค้นหา..."
                       onChange={(event) => {
@@ -59,8 +61,9 @@ function navbar() {
                       }}
                     />
                   </form>
-                 
-                  <button
+                  <Link href="/searchGameList">
+                  <button 
+                    type="button"
                     className="bg-white flex items-center justify-center px-4 border-l"
                     onClick= {getGamesdata}
                     
@@ -75,7 +78,7 @@ function navbar() {
                       <path d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
                     </svg>
                   </button>
-                  
+                  </Link>
 
                 </div>
               </div>
@@ -101,7 +104,7 @@ function navbar() {
 
                 <a>
                   <div className="text-black font-semibold px-3 py-2 text-md hover:font-black">
-                    {best.game}
+                    {best.user}
                   </div>
                 </a>
 

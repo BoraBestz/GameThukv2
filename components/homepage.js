@@ -3,7 +3,7 @@ import { useState } from "react";
 import Axios from "axios";
 import Link from "next/link";
 
-function homepage(props) {
+function homepage() {
   const [gamesdataList, setGamesdataList] = useState([]);
   const getGamesdata = () => {
     Axios.get("http://localhost:3001/games_data").then((response) => {
