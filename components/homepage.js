@@ -2,6 +2,8 @@ import navbar from "./navbar";
 import { useState } from "react";
 import Axios from "axios";
 import Link from "next/link";
+import Image from "next/image";
+import PageTitle from "./PageTitle";
 
 function homepage() {
   const [gamesdataList, setGamesdataList] = useState([]);
@@ -12,9 +14,11 @@ function homepage() {
   };
 
   return (
-    
-    <div className="bg-purple-100 flex justify-center items-center flex-col pt-40 text-center font-bold lg:text-4xl text-5xl space-y-2"> รายชื่อเกม 100 เกม
-    
+    <div className="">
+      <PageTitle text="เกมใหม่ล่าสุด!" />
+      <p className="max-w-xl text-center px-2 mx-auto text-base text-gray-600">
+        เกมใหม่ล่าสุดคุณภาพดี. 🐶
+      </p>
       <button
         className="flex items-center justify-center px-4 border-l"
         onClick={getGamesdata}
@@ -29,26 +33,31 @@ function homepage() {
         </svg>
       </button>
 
-      <br></br>
-
-      {gamesdataList.map((val, key) => {
-        return (
-          <div className="grid grid-cols-30 gap-20 " key={key} >
-            <div className="bg-blue-300 p-3 rounded"> 
-              <Link href="/gameprice">
-                  <a className="text-3xl">
-                    {val.game_name} <img width= "500" height = "500" src={val.game_image} alt="new" />
-                    <div className="text-2xl">ราคาถูกสุด 
-                      </div>
-                      <div className="text-1xl">
-                      {val.now_price} บาท
-                      </div>
-                  </a>
-              </Link>
-            </div>
-          </div>
-        );
-      })}
+      <div className="py-12  grid grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 grid-cols-5 gap-4">
+        {gamesdataList.map((val, key) => {
+          return (
+            <a className="h-150 w-72 rounded shadow-lg mx-auto border border-palette-lighter">
+              <div className="h-72 border-b-2 border-palette-lighter relative">
+                <p>image</p>
+              </div>
+              <div className="h-48 relative">
+                <div className="font-primary text-palette-primary text-2xl pt-4 px-4 font-semibold">
+                  <p>title</p>
+                </div>
+                <div className="text-lg text-gray-600 p-4 font-primary font-light">
+                  <p>description</p>
+                </div>
+                <div
+                  className="text-palette-dark font-primary font-medium text-base absolute bottom-0 right-0 mb-4 pl-8 pr-4 pb-1 pt-2 bg-palette-lighter 
+           rounded-tl-sm triangle"
+                >
+                  <p>price</p>
+                </div>
+              </div>
+            </a>
+          );
+        })}
+      </div>
     </div>
   );
 }
