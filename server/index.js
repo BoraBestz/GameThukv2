@@ -50,8 +50,7 @@ app.get("/games_price_home", (req, res) => {
 //searchgame
 app.get("/search/:gameName", (req,res) => {
   const gameName = req.params.gameName;
-  console.log(gameName)
-  db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"%' group by gd.game_id ",
+  db.query("SELECT gd.game_id,gd.game_name,gd.game_description,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"%' group by gd.game_id ",
    [gameName],
   (err, result) => {
     if (err) {
