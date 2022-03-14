@@ -18,6 +18,8 @@ function login() {
   const best = useSelector((state) => ({ ...state }));
 
   const login = () => {
+    
+    
     if (username.length > 0 && password.length > 0) {
       Axios.post("http://localhost:3001/login", {
         username: username,
@@ -25,21 +27,26 @@ function login() {
       }).then((response) => {
         if (response.data.message) {
           setLoginStatus(response.data.message);
+          window.location.href = '/login';
         } else {
           setLoginStatus(response.data[0].username);
           ditpatch({
             type: "LOGIN",
             payload: username
-            
           });
+  
         }
       });
+      
     } else if (username.length == 0 && password.length > 0) {
       alert("กรุณากรอก username ");
+      window.location.href = '/login';
     } else if (username.length > 0 && password.length == 0) {
       alert("กรุณากรอก password ");
+      window.location.href = '/login';
     } else {
       alert("กรุณากรอก username และ password ");
+      window.location.href = '/login';
     }
   };
   
@@ -81,6 +88,7 @@ function login() {
           {/* <Link href="/"> */}
 
           <div className="flex justify-center items-center mt-6">
+          <Link href="/">
             <button
               type="button"
               className={`bg-blue-600 py-2 px-6 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
@@ -88,10 +96,12 @@ function login() {
             >
               ยืนยัน
             </button>
+            </Link>
+
           </div>
           {/* </Link> */}
 
-          <h1 className={"bg-red-500"}>{loginStatus}</h1>
+          
 
           <Link href="/register">
             <div className="text-right mt-1">

@@ -36,9 +36,11 @@ function register() {
         }
         else if (password != conpassword) {
             alert("กรอกรหัสผ่านและรหัสผ่านยืนยันให้ตรงกัน");
+            document.location.href="/register"
         }
         else {
             alert("กรอกข้อมูลให้ครบถ้วน");
+            document.location.href="/register"
         }
       };
 

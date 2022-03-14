@@ -1,5 +1,3 @@
-
-
 export const gameReducer  = (state = null, action) => {
     switch (action.type){
         case 'SEARCH':

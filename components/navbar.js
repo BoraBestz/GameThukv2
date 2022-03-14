@@ -30,8 +30,12 @@ function navbar() {
       });
     }
   };
+  const testClick = () => {
+     if (best.user != null) {
+      window.location.href = '/login';
+     }
+  }
 
-  console.log(best.game)
   return (
     <nav className=" bg-blue-50 shadow-sm fixed w-full z-10">
 
@@ -107,13 +111,21 @@ function navbar() {
                     {best.user}
                   </div>
                 </a>
-
-                <Link href="/login">
+                
+                <Link href="/login" >
+                <button 
+                    type="button"
+                    className="cursor-pointer bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black"
+                    onClick= {testClick}
+                    
+                  >
                   <a>
-                    <div className="cursor-pointer bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-black">
-                      เข้าสู่ระบบ
+                    <div className="">
+                     {best.user == null ? 'login' : 'logout'}
                     </div>
                   </a>
+              </button>
+
                 </Link>
               </div>
               
