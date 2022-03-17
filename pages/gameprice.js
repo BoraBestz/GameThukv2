@@ -59,12 +59,20 @@ function favorite() {
               <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
                 God of War
               </h1>
-              {/* <h2 class="text-sm title-font text-gray-500 tracking-widest">
-                Release Date
-              </h2> */}
+              <div>
+                <button class="py-1 px-2 mr-2 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ">
+                  แอ็คชัน
+                </button>
+                <button class="py-1 px-2 mr-2 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                  ผจญภัย
+                </button>
+                <button class="py-1 px-2 mr-2 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                  เกมสวมบทบาท
+                </button>
+              </div>
               <div class="flex mb-4">
                 <span class="flex items-center">
-                  <span class="text-gray-600 ml-3">
+                  <span class="text-gray-600 ">
                     ผู้พัฒนา: Santa Monica Studio
                   </span>
                 </span>
@@ -98,140 +106,129 @@ function favorite() {
                 <span class="title-font font-medium text-2xl text-gray-900">
                   ราคาถูกสุด: <span className="text-blue-500">1232.13</span> บาท
                 </span>
-                <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                  ติดตามราคาเกม
-                </button>
 
-                <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                  <svg
-                    fill="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    class="w-5 h-5"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                  </svg>
+                {/* ปุ่มก่อนกดติดตาม */}
+                <button class="flex ml-auto mr-10 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                  ติดตาม
                 </button>
+                {/* ปุ่มหลังจากกดติดตามไปแล้ว */}
+                {/* <button class="flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
+                  ติดตามแล้ว
+                </button> */}
               </div>
 
               <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
+
               {/* -----ส่วนจัดเรียงราคา----- */}
+
               <div class="lg:w-full w-full mx-auto overflow-auto">
-                <table class="table-auto w-full text-left whitespace-no-wrap">
+                <table class="table-fixed w-full text-left whitespace-no-wrap">
                   <thead>
                     <tr>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
                         ร้านค้า
                       </th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                        {/* Speed */}
+                        ราคาหน้าร้าน
                       </th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                        {/* Storage */}
+                        ราคา(บาท)
                       </th>
-                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                        ราคา
-                      </th>
-                      {/* <th class="w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br"></th> */}
+                      <th class="py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td class="px-4 py-3">GameSrig</td>
-                      <td class="px-4 py-3">{/* 5 Mb/s */}</td>
-                      <td class="px-4 py-3">{/* 15 GB */}</td>
-                      <td class="px-4 py-3 text-lg text-gray-900">$12</td>
-                      {/* <td class="w-10 text-center">
-                        <input name="plan" type="radio" />
-                      </td> */}
+                      <td class="px-4 py-3">$10</td>
+                      <td class="px-4 py-3">1390.0</td>
+                      <td class="px-4 py-3 ">
+                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
+                          ซื้อเลย 🛒
+                        </button>
+                      </td>
                     </tr>
                     <tr>
                       <td class="border-t-2 border-gray-200 px-4 py-3">Hrk</td>
+                      <td class="border-t-2 border-gray-200 px-4 py-3">$10</td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        {/* 25 Mb/s */}
+                        1232.13
                       </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                        {/* 25 GB */}
+                      <td class="border-t-2 border-gray-200 px-4 py-3 ">
+                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
+                          ซื้อเลย 🛒
+                        </button>
                       </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">
-                        $24
-                      </td>
-                      {/* <td class="border-t-2 border-gray-200 w-10 text-center">
-                        <input name="plan" type="radio" />
-                      </td> */}
                     </tr>
                     <tr>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
                         Kinguin
                       </td>
+                      <td class="border-t-2 border-gray-200 px-4 py-3">$10</td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        {/* 36 Mb/s */}
+                        1522.82
                       </td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        {/* 40 GB */}
+                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
+                          ซื้อเลย 🛒
+                        </button>
                       </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">
-                        $50
-                      </td>
-                      {/* <td class="border-t-2 border-gray-200 w-10 text-center">
-                        <input name="plan" type="radio" />
-                      </td> */}
                     </tr>
                     <tr>
                       <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
                         Steam
                       </td>
                       <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
-                        {/* 48 Mb/s */}
+                        $10
                       </td>
                       <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
-                        {/* 120 GB */}
+                        1290.0
                       </td>
-                      <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3 text-lg text-gray-900">
-                        $72
+                      <td class="border-t-2 border-gray-200 px-4 py-3">
+                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
+                          ซื้อเลย 🛒
+                        </button>
                       </td>
-                      {/* <td class="border-t-2 border-b-2 border-gray-200 w-10 text-center">
-                        <input name="plan" type="radio" />
-                      </td> */}
                     </tr>
                     <tr>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
                         Epicgames
                       </td>
+                      <td class="border-t-2 border-gray-200 px-4 py-3">$10</td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        {/* 36 Mb/s */}
+                        1290.0
                       </td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        {/* 40 GB */}
+                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
+                          ซื้อเลย 🛒
+                        </button>
                       </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">
-                        $50
-                      </td>
-                      {/* <td class="border-t-2 border-gray-200 w-10 text-center">
-                        <input name="plan" type="radio" />
-                      </td> */}
                     </tr>
                     <tr>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
                         Gamivo
                       </td>
+                      <td class="border-t-2 border-gray-200 px-4 py-3">$10</td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        {/* 36 Mb/s */}
+                        1484.74
                       </td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        {/* 40 GB */}
+                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
+                          ซื้อเลย 🛒
+                        </button>
                       </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3 text-lg text-gray-900">
-                        $50
-                      </td>
-                      {/* <td class="border-t-2 border-gray-200 w-10 text-center">
-                        <input name="plan" type="radio" />
-                      </td> */}
                     </tr>
                   </tbody>
                 </table>
+                <br></br>
+                <div
+                  class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
+                  role="alert"
+                >
+                  <span class="font-medium">แจ้งเตือน !!</span>{" "}
+                  ราคา(บาท)ที่แสดงเป็นอัตราเงินที่เปลี่ยนจากราคาต่างประเทศมาเป็นเงินบาทโดยใช้
+                  api บลาๆ
+                </div>
               </div>
               {/* จบส่วนจัดเรียงราคา */}
               <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
@@ -242,22 +239,28 @@ function favorite() {
                 สเปคขั้นต่ำ
               </h1>
               <p class="leading-relaxed text-base">
-                Locavore cardigan small batch roof party blue bottle blog
-                meggings sartorial jean shorts kickstarter migas sriracha
-                church-key synth succulents. Actually taiyaki neutra, distillery
-                gastropub pok pok ugh.
+                ระบบปฏิบัติการ: Windows 10 64-bit หน่วยประมวลผล: Intel i5-2500k
+                <br></br>
+                (4 core 3.3 GHz) or AMD Ryzen 3 1200 (4 core 3.1 GHz)<br></br>
+                หน่วยความจำ: แรม 8 GB กราฟิกส์: NVIDIA GTX 960 (4 GB) or AMD R9
+                <br></br>
+                290X (4 GB) DirectX: เวอร์ชัน 11 พื้นที่จัดเก็บข้อมูล:<br></br>
+                พื้นที่ว่างที่พร้อมใช้งาน 70 GB
               </p>
             </div>
 
             <div class="flex flex-col md:w-1/2 md:pl-12 md:pl-8 md:pr-17">
               <h class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
-                สเปคพื้นฐาน
+                สเปคแนะนำ
               </h>
               <p class="leading-relaxed text-base">
-                Locavore cardigan small batch roof party blue bottle blog
-                meggings sartorial jean shorts kickstarter migas sriracha
-                church-key synth succulents. Actually taiyaki neutra, distillery
-                gastropub pok pok ugh.
+                ระบบปฏิบัติการ: Windows 10 64-bit หน่วยประมวลผล: Intel i5-6600k
+                <br></br>
+                (4 core 3.5 GHz) or AMD Ryzen 5 2400 G (4 core 3.6 GHz)<br></br>
+                หน่วยความจำ: แรม 8 GB กราฟิกส์: NVIDIA GTX 1060 (6 GB) or AMD RX
+                <br></br>
+                570 (4 GB) DirectX: เวอร์ชัน 11 พื้นที่จัดเก็บข้อมูล:<br></br>
+                พื้นที่ว่างที่พร้อมใช้งาน 70 GB
               </p>
             </div>
           </div>
