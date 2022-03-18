@@ -21,8 +21,9 @@ function favorite() {
       <section class="text-gray-600 body-font overflow-hidden">
         <div class="container px-5 py-24 mx-auto">
           <div class="lg:w-4/5 mx-auto flex flex-wrap">
+
             <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-              <Carousel>
+              <Carousel >
                 <div>
                   <img
                     src="https://cdn.akamai.steamstatic.com/steam/apps/1593500/ss_6eccc970b5de2943546d93d319be1b5c0618f21b.1920x1080.jpg?t=1642526157"
@@ -52,6 +53,17 @@ function favorite() {
                     src="https://cdn.akamai.steamstatic.com/steam/apps/1593500/ss_1bd99270dcbd4ff9fe9c94b0d9c8ffc50ebb42c7.1920x1080.jpg?t=1642526157"
                     alt="image5"
                   />
+                </div>
+                
+                <div>
+                  <iframe
+                    src="http://cdn.akamai.steamstatic.com/steam/apps/256864004/movie_max.mp4?t=1639001817"
+                    width="981"
+                    height="552"
+                    frameborder="0"
+                    allow="fullscreen; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
                 </div>
               </Carousel>
             </div>
