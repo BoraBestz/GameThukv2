@@ -2,6 +2,7 @@ import React, { useState, createContext, useContext  } from "react";
 import Link from "next/link";
 import Axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,18 +17,13 @@ function navbar() {
  
   const getGamesdata = () => {
     if (gameName.length > 0) {
-      alert("Searching " + gameName + "...");
-
-      Axios.get("http://localhost:3001/search/"+gameName, {
-      }).then((response) => {
-        setGamesdataList(response.data);
+      
         ditpatch({
           type: "SEARCH",
           payload: gameName
           
         });
         // window.location.href = '/searchGameList';
-      });
     }
   };
   const testClick = () => {

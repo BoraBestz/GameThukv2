@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
+    "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.26.0",
     "carousel": "^0.0.3",
     "nest-next": "^9.6.0",
