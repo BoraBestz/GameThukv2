@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext  } from "react";
 import Link from "next/link";
 import Axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+
 
 function navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -124,23 +124,6 @@ function navbar() {
 
                 </Link>
               </div>
-              
-              {/* {gamesdataList.map((val, key) => {
-                return (
-                  <div className="grid grid-cols-30 gap-20" key={key}> 
-                    <div className="bg-blue-300 p-3 rounded">
-                      <Link href="/gameprice">
-                          <a className="text-3xl">
-                            {val.game_name}{" "}
-                            <img src={val.game_image} alt="new" />
-                            <div className="text-2xl">ราคาถูกสุด</div>
-                            <div className="text-1xl">{val.now_price} บาท</div>
-                        </a>
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })} */}
             </div>
           </div>
         </div>
