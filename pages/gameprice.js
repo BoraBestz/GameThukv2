@@ -21,9 +21,8 @@ function favorite() {
       <section class="text-gray-600 body-font overflow-hidden">
         <div class="container px-5 py-24 mx-auto">
           <div class="lg:w-4/5 mx-auto flex flex-wrap">
-
             <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-              <Carousel >
+              <Carousel>
                 <div>
                   <img
                     src="https://cdn.akamai.steamstatic.com/steam/apps/1593500/ss_6eccc970b5de2943546d93d319be1b5c0618f21b.1920x1080.jpg?t=1642526157"
@@ -54,7 +53,7 @@ function favorite() {
                     alt="image5"
                   />
                 </div>
-                
+
                 <div>
                   <iframe
                     src="http://cdn.akamai.steamstatic.com/steam/apps/256864004/movie_max.mp4?t=1639001817"
@@ -234,12 +233,27 @@ function favorite() {
                 </table>
                 <br></br>
                 <div
-                  class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
+                  class="flex p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
                   role="alert"
                 >
-                  <span class="font-medium">แจ้งเตือน !!</span>{" "}
-                  ราคา(บาท)ที่แสดงเป็นอัตราเงินที่เปลี่ยนจากราคาต่างประเทศมาเป็นเงินบาทโดยใช้
-                  api บลาๆ
+                  <svg
+                    class="inline flex-shrink-0 mr-3 w-5 h-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <div>
+                    <span class="font-medium">
+                      ราคา(บาท)ที่แสดงเป็นอัตราเงินที่เปลี่ยนจากราคาต่างประเทศมาเป็นเงินบาทโดยใช้
+                      api currency converter{" "}
+                    </span>
+                  </div>
                 </div>
               </div>
               {/* จบส่วนจัดเรียงราคา */}

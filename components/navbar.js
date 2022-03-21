@@ -117,7 +117,7 @@ function navbar() {
                   >
                   <a>
                     <div className="">
-                     {best.user == null ? 'login' : 'logout'}
+                     {best.user == null ? 'เข้าสู่ระบบ' : 'ออกจากระบบ'}
                     </div>
                   </a>
               </button>
