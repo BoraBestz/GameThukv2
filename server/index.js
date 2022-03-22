@@ -61,10 +61,24 @@ app.get("/search/:gameName", (req,res) => {
   });
 });
 
-//gamePrice
+//gameDetail
 app.get("/gameprice/:gameName", (req,res) => {
   const gameName = req.params.gameName;
-  db.query("SELECT gd.game_id,gd.game_name,gd.game_description,gd.release_date,gd.developer,gd.publisher,gd.required_age,gm.screenshots_1,gm.screenshots_2,gm.screenshots_3,gm.screenshots_4,screenshots_5,movies,min(pc.now_price) as now_price,gs.spec_minimum,gs.spec_recommend FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) INNER JOIN games_spec gs on (gs.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"%' group by gd.game_id ",
+  db.query("SELECT gd.game_id,gd.game_name,gd.game_description,gd.release_date,gd.developer,gd.publisher,gd.required_age,gm.screenshots_1,gm.screenshots_2,gm.screenshots_3,gm.screenshots_4,screenshots_5,movies,min(pc.now_price) as lowest_price,gs.spec_minimum,gs.spec_recommend FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) INNER JOIN games_spec gs on (gs.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"%' group by gd.game_id ",
+   [gameName],
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+//gamePrice_priceList
+app.get("/priceList/:gameName", (req,res) => {
+  const gameName = req.params.gameName;
+  db.query("SELECT market_id,now_price,market_url FROM games_data gd INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"%' ",
    [gameName],
   (err, result) => {
     if (err) {

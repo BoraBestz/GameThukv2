@@ -11,14 +11,26 @@ import { useEffect } from "react";
 function favorite() {
   //เข้าถึง store
   const best = useSelector((state) => ({ ...state }));
-
   const [gamesdataList, setGamesdataList] = useState([]);
+  const [gamesPriceList, setGamesPriceList] = useState([]);
   useEffect(() => {
       Axios.get("http://localhost:3001/gameprice/"+ best.game, {
       }).then((response) => {
         setGamesdataList(response.data);
       }); 
+      
   }, []);
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/priceList/"+ best.game, {
+      }).then((response) => {
+        setGamesPriceList(response.data);
+      }); 
+  }, []);
+  console.log(gamesPriceList)
+  // handleShopping = () => {
+    
+  // }
 
   return (
     <div className="">
@@ -120,7 +132,7 @@ function favorite() {
 
               <div class="flex">
                 <span class="title-font font-medium text-2xl text-gray-900">
-                  ราคาถูกสุด: <span className="text-blue-500">{val.now_price}</span> บาท
+                  ราคาถูกสุด: <span className="text-blue-500">{val.lowest_price}</span> บาท
                 </span>
 
                 {/* ปุ่มก่อนกดติดตาม */}
@@ -157,18 +169,20 @@ function favorite() {
                     <tr>
                       <td class="px-4 py-3">GameSrig</td>
                       {/* <td class="px-4 py-3">$10</td> */}
-                      <td class="px-4 py-3">1390.0</td>
+                      <td class="px-4 py-3" >{gamesPriceList}</td>
                       <td class="px-4 py-3 ">
+                        <a target="_blank" href="https://www.gamesrig.com/god-of-war-steam-key">
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
                           ซื้อเลย 🛒
                         </button>
+                        </a>
                       </td>
                     </tr>
                     <tr>
                       <td class="border-t-2 border-gray-200 px-4 py-3">Hrk</td>
                       {/* <td class="border-t-2 border-gray-200 px-4 py-3">$10</td> */}
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        1232.13
+                      3333
                       </td>
                       <td class="border-t-2 border-gray-200 px-4 py-3 ">
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
@@ -182,7 +196,7 @@ function favorite() {
                       </td>
                       {/* <td class="border-t-2 border-gray-200 px-4 py-3">$10</td> */}
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        1522.82
+                      5555
                       </td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
@@ -198,7 +212,7 @@ function favorite() {
                         $10
                       </td> */}
                       <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
-                        1290.0
+                      6666
                       </td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
@@ -212,7 +226,7 @@ function favorite() {
                       </td>
                       {/* <td class="border-t-2 border-gray-200 px-4 py-3">$10</td> */}
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        1290.0
+                      7778
                       </td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
@@ -226,7 +240,7 @@ function favorite() {
                       </td>
                       {/* <td class="border-t-2 border-gray-200 px-4 py-3">$10</td> */}
                       <td class="border-t-2 border-gray-200 px-4 py-3">
-                        1484.74
+                      123123123
                       </td>
                       <td class="border-t-2 border-gray-200 px-4 py-3">
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
@@ -235,6 +249,7 @@ function favorite() {
                       </td>
                     </tr>
                   </tbody>
+
                 </table>
                 <br></br>
                 <div
