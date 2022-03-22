@@ -169,7 +169,7 @@ function favorite() {
                     <tr>
                       <td class="px-4 py-3">GameSrig</td>
                       {/* <td class="px-4 py-3">$10</td> */}
-                      <td class="px-4 py-3" >{gamesPriceList}</td>
+                      <td class="px-4 py-3" >50</td>
                       <td class="px-4 py-3 ">
                         <a target="_blank" href="https://www.gamesrig.com/god-of-war-steam-key">
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
