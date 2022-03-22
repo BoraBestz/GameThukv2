@@ -75,10 +75,10 @@ app.get("/gameprice/:gameName", (req,res) => {
   });
 });
 
-//gamePrice_priceList
-app.get("/priceList/:gameName", (req,res) => {
+//gameTagsList
+app.get("/tagsList/:gameName", (req,res) => {
   const gameName = req.params.gameName;
-  db.query("SELECT market_id,now_price,market_url FROM games_data gd INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"%' ",
+  db.query("SELECT gt.tag_id,td.tag_name  FROM games_data gd INNER JOIN games_tags_data gt on (gd.game_id = gt.game_id) INNER JOIN tags_data td on (gt.tag_id =  td.tag_id ) WHERE gd.game_name LIKE '%"+gameName+"%' ",
    [gameName],
   (err, result) => {
     if (err) {
@@ -88,6 +88,22 @@ app.get("/priceList/:gameName", (req,res) => {
     }
   });
 });
+
+//gamePriceList
+app.get("/priceList/:gameName", (req,res) => {
+  const gameName = req.params.gameName;
+  db.query("SELECT md.market_id,now_price,market_url,md.market_name FROM games_data gd INNER JOIN price_check pc on (pc.game_id = gd.game_id) INNER JOIN market_data md on (pc.market_id =  md.market_id ) WHERE gd.game_name LIKE '%"+gameName+"%' ",
+   [gameName],
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+
 
 //register
 app.post("/register", (req, res) => {

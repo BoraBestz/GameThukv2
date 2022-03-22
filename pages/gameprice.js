@@ -13,6 +13,7 @@ function favorite() {
   const best = useSelector((state) => ({ ...state }));
   const [gamesdataList, setGamesdataList] = useState([]);
   const [gamesPriceList, setGamesPriceList] = useState([]);
+  const [gamesTagsList, setgamesTagsList] = useState([]);
   useEffect(() => {
       Axios.get("http://localhost:3001/gameprice/"+ best.game, {
       }).then((response) => {
@@ -27,10 +28,13 @@ function favorite() {
         setGamesPriceList(response.data);
       }); 
   }, []);
-  console.log(gamesPriceList)
-  // handleShopping = () => {
-    
-  // }
+  
+  useEffect(() => {
+    Axios.get("http://localhost:3001/tagsList/"+ best.game, {
+      }).then((response) => {
+        setgamesTagsList(response.data);
+      }); 
+  }, []);
 
   return (
     <div className="">
@@ -92,15 +96,11 @@ function favorite() {
                 {val.game_name}
               </h1>
               <div>
-                <button class="py-1 px-2 mr-2 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ">
-                  แอ็คชัน
-                </button>
-                <button class="py-1 px-2 mr-2 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                  ผจญภัย
-                </button>
-                <button class="py-1 px-2 mr-2 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                  เกมสวมบทบาท
-                </button>
+                {gamesTagsList.map((val) => (
+                  <button class="py-1 px-2 mr-2 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 ">
+                    {val.tag_name}
+                  </button>
+                ))}
               </div>
               <div class="flex mb-4">
                 <span class="flex items-center">
@@ -165,91 +165,22 @@ function favorite() {
                       <th class="py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
                     </tr>
                   </thead>
+                  {gamesPriceList.map((val) => (
                   <tbody>
                     <tr>
-                      <td class="px-4 py-3">GameSrig</td>
+                      <td class="px-4 py-3">{val.market_name}</td>
                       {/* <td class="px-4 py-3">$10</td> */}
-                      <td class="px-4 py-3" >50</td>
+                      <td class="px-4 py-3" >{val.now_price}</td>
                       <td class="px-4 py-3 ">
-                        <a target="_blank" href="https://www.gamesrig.com/god-of-war-steam-key">
+                        <a target="_blank" href={val.market_url}>
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
                           ซื้อเลย 🛒
                         </button>
                         </a>
                       </td>
                     </tr>
-                    <tr>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">Hrk</td>
-                      {/* <td class="border-t-2 border-gray-200 px-4 py-3">$10</td> */}
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                      3333
-                      </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3 ">
-                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-                          ซื้อเลย 🛒
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                        Kinguin
-                      </td>
-                      {/* <td class="border-t-2 border-gray-200 px-4 py-3">$10</td> */}
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                      5555
-                      </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-                          ซื้อเลย 🛒
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
-                        Steam
-                      </td>
-                      {/* <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
-                        $10
-                      </td> */}
-                      <td class="border-t-2 border-b-2 border-gray-200 px-4 py-3">
-                      6666
-                      </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-                          ซื้อเลย 🛒
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                        Epicgames
-                      </td>
-                      {/* <td class="border-t-2 border-gray-200 px-4 py-3">$10</td> */}
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                      7778
-                      </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-                          ซื้อเลย 🛒
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                        Gamivo
-                      </td>
-                      {/* <td class="border-t-2 border-gray-200 px-4 py-3">$10</td> */}
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                      123123123
-                      </td>
-                      <td class="border-t-2 border-gray-200 px-4 py-3">
-                        <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-                          ซื้อเลย 🛒
-                        </button>
-                      </td>
-                    </tr>
                   </tbody>
-
+                  ))}
                 </table>
                 <br></br>
                 <div
