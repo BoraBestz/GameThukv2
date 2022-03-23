@@ -25,12 +25,12 @@ function homepage() {
       type: "CLICK_GAME",
       payload: gameName,
     });
-    // window.location.href = '/gameprice';
+    // window.location.href = '/gameprice/{game_id}';
   };
+  console.log('homepage')
 
   return (
     <div className="">
-
       <div class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
         <div className="max-w-2xl mx-auto py-20 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8">
           <PageTitle text="เกมใหม่ล่าสุด!" />

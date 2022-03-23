@@ -32,6 +32,12 @@ function navbar() {
      }
   }
 
+  const handleKeypress = e => {
+    if(e.keyCode == 13) {
+      window.location.href = '/searchGameList';
+    }
+  }
+
   return (
     <nav className=" bg-blue-50 shadow-sm fixed w-full z-10">
 
@@ -65,7 +71,8 @@ function navbar() {
                   <button 
                     type="button"
                     className="bg-white flex items-center justify-center px-4 border-l"
-                    onClick= {getGamesdata}
+                    onClick= {handleKeypress}
+                    onKeyPress={handleKeypress}
                     
                   >
                     

@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 function login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const [loginStatus, setLoginStatus] = useState("");
 
@@ -19,33 +20,34 @@ function login() {
 
   const login = () => {
     
-    
-    if (username.length > 0 && password.length > 0) {
+    if (email.length > 0 && password.length > 0) {
       Axios.post("http://localhost:3001/login", {
         username: username,
         password: password,
+        email: email,
       }).then((response) => {
         if (response.data.message) {
           setLoginStatus(response.data.message);
           window.location.href = '/login';
         } else {
           setLoginStatus(response.data[0].username);
+
           ditpatch({
             type: "LOGIN",
-            payload: username
+            payload: response.data[0].username
           });
   
         }
       });
       
-    } else if (username.length == 0 && password.length > 0) {
-      alert("กรุณากรอก username ");
+    } else if (email.length == 0 && password.length > 0) {
+      alert("กรุณากรอก email ");
       window.location.href = '/login';
-    } else if (username.length > 0 && password.length == 0) {
+    } else if (email.length > 0 && password.length == 0) {
       alert("กรุณากรอก password ");
       window.location.href = '/login';
     } else {
-      alert("กรุณากรอก username และ password ");
+      alert("กรุณากรอก email และ password ");
       window.location.href = '/login';
     }
   };
@@ -61,14 +63,14 @@ function login() {
 
         <form>
           <div>
-            <label htmlFor="email">Username</label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
               id="email"
               placeholder="ชื่อผู้ใช้"
               onChange={(event) => {
-                setUsername(event.target.value);
+                setEmail(event.target.value);
               }}
             />
           </div>

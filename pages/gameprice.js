@@ -14,13 +14,15 @@ function favorite() {
   const [gamesdataList, setGamesdataList] = useState([]);
   const [gamesPriceList, setGamesPriceList] = useState([]);
   const [gamesTagsList, setgamesTagsList] = useState([]);
-  useEffect(() => {
-      Axios.get("http://localhost:3001/gameprice/"+ best.game, {
-      }).then((response) => {
+  const [gamesList, setgamesList] = useState([]);
+  
+
+  useEffect(async() => {
+     await Axios.get("http://localhost:3001/gameprice/"+ best.game, {
+    }).then((response) => {
         setGamesdataList(response.data);
-      }); 
-      
-  }, []);
+    }); 
+}, []);
 
   useEffect(() => {
     Axios.get("http://localhost:3001/priceList/"+ best.game, {
@@ -36,15 +38,25 @@ function favorite() {
       }); 
   }, []);
 
+  useEffect(() => {
+    Axios.get("http://localhost:3001/gamecount/"+ best.game, {
+      }).then((response) => {
+        // console.log(response)
+      }); 
+  }, []);
+
   return (
     <div className="">
+      
       <Navbar />
       {gamesdataList.map((val) => (
+        
       <section class="text-gray-600 body-font overflow-hidden">
         <div class="container px-5 py-24 mx-auto">
           <div class="lg:w-4/5 mx-auto flex flex-wrap">
 
             <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
+              
               <Carousel >
                 <div>
                   <img
