@@ -7,6 +7,8 @@ import PageTitle from "./PageTitle";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+
+
 function homepage() {
   //เปลี่ยนแปลงค่า store
   const ditpatch = useDispatch();
@@ -28,9 +30,11 @@ function homepage() {
     // window.location.href = '/gameprice/{game_id}';
   };
   console.log("homepage");
+  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <div className="">
+      
       <div class="flex flex-row min-h-screen bg-gray-100 text-gray-800">
         <aside class="sidebar overflow-y-auto w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-50 rounded dark:bg-gray-800 py-20">
           <div class="sidebar-content px-4 py-6 space-y-2">
@@ -315,15 +319,64 @@ function homepage() {
           </div>
         </aside>
 
-        <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in py-20">
-          <div class="main-content flex flex-col flex-grow p-4">
-            <PageTitle text="เกมใหม่ล่าสุด!" />
-            <p className="max-w-xl text-center px-2 mx-auto text-base text-gray-600">
-              เกมใหม่ล่าสุด 100 รายการ 🎮
-            </p>
-            <br></br>
+        <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in py-20 bg-white">
+          <div class="main-content flex flex-col flex-grow p-4 ">
+          <div className="flex justify-center items-center flex-shrink-0 ">
+              <h1 className=" font-bold text-xl ">
+                
+                  <a className="leading-relaxed font-primary font-extrabold text-4xl text-center text-palette-primary mt-4 py-2 sm:py-4">
+                    Game<span className="text-blue-500">Thuk</span>
+                  </a>
+                
+              </h1>
+            </div>
+          
+          <p className="max-w-xl text-center px-2 mx-auto text-4l text-gray-600">
+            แหล่งรวมเกมถูกหลากหลายรายการ 🎮
+          </p>
+          <br></br>
+          
             <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
               เกมใหม่ล่าสุด
+            </h2>
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+              {gamesdataList.map((val) => (
+                <Link href="/gameprice">
+                  <div key={val.game_id} className="group relative">
+                    <button onClick={() => goToGamePrice(val.game_name)}>
+                      <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 ">
+                        <img
+                          src={val.game_image}
+                          alt={val.game_image}
+                          className="w-full h-full object-center object-cover "
+                        />
+                      </div>
+                      <div className="mt-4 flex justify-between">
+                        <div>
+                          <h3 className="text-sm text-gray-700">
+                            <a href={val.href}>
+                              <span
+                                aria-hidden="true"
+                                className="absolute inset-0"
+                              />
+                              {val.game_name}
+                            </a>
+                          </h3>
+                        </div>
+                        <p className="text-sm font-medium text-gray-900">
+                          ราคาถูกสุด {val.now_price} บาท
+                        </p>
+                      </div>
+                    </button>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700"></div>
+
+            <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+              เกมยอดนิยม
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
               {gamesdataList.map((val) => (
