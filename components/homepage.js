@@ -27,57 +27,340 @@ function homepage() {
     });
     // window.location.href = '/gameprice/{game_id}';
   };
-  console.log('homepage')
+  console.log("homepage");
 
   return (
     <div className="">
-      <div class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
-        <div className="max-w-2xl mx-auto py-20 px-4 sm:py-20 sm:px-6 lg:max-w-7xl lg:px-8">
-          <PageTitle text="เกมใหม่ล่าสุด!" />
-          <p className="max-w-xl text-center px-2 mx-auto text-base text-gray-600">
-            เกมใหม่ล่าสุด 100 รายการ 🎮
-          </p>
-          <br></br>
-          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-            เกมใหม่ล่าสุด
-          </h2>
+      <div class="flex flex-row min-h-screen bg-gray-100 text-gray-800">
+        <aside class="sidebar overflow-y-auto w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-50 rounded dark:bg-gray-800 py-20">
+          <div class="sidebar-content px-4 py-6 space-y-2">
+            <ul class="flex flex-col w-full">
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">แอ็คชัน</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
 
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {gamesdataList.map((val) => (
-              <Link href="/gameprice">
-                <div key={val.game_id} className="group relative">
-                  <button onClick={() => goToGamePrice(val.game_name)}>
-                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 ">
-                      <img
-                        src={val.game_image}
-                        alt={val.game_image}
-                        className="w-full h-full object-center object-cover "
-                      />
-                    </div>
-                    <div className="mt-4 flex justify-between">
-                      <div>
-                        <h3 className="text-sm text-gray-700">
-                          <a href={val.href}>
-                            <span
-                              aria-hidden="true"
-                              className="absolute inset-0"
-                            />
-                            {val.game_name}
-                          </a>
-                        </h3>
-                      </div>
-                      <p className="text-sm font-medium text-gray-900">
-                        ราคาถูกสุด {val.now_price} บาท
-                      </p>
-                    </div>
-                  </button>
-                </div>
-              </Link>
-            ))}
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">ผจญภัย</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">เกมสวมบทบาท</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">แคชชวล</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">อินดี้</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">จำลองสถานการณ์</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">กีฬา</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">เล่นระหว่างการพัฒนา</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">แข่งความเร็ว</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">กลยุทธ์</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">ผู้เล่นหลายคนจำนวนมาก</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">แอนิเมชันและการสร้างโมเดล</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">การออกแบบและภาพประกอบ</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">การแก้ไขรูปภาพ</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+
+              <li class="my-px">
+                <a
+                  href="#"
+                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <span class="ml-3">ยูทิลิตี้</span>
+                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                    <input
+                      id="remember"
+                      aria-describedby="remember"
+                      type="checkbox"
+                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      required
+                    />
+                  </div>
+                </a>
+              </li>
+              <div className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700"></div>
+              <button
+                type="button"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              >
+                ค้นหา
+              </button>
+            </ul>
           </div>
-        </div>
+        </aside>
+
+        <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in py-20">
+          <div class="main-content flex flex-col flex-grow p-4">
+            <PageTitle text="เกมใหม่ล่าสุด!" />
+            <p className="max-w-xl text-center px-2 mx-auto text-base text-gray-600">
+              เกมใหม่ล่าสุด 100 รายการ 🎮
+            </p>
+            <br></br>
+            <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
+              เกมใหม่ล่าสุด
+            </h2>
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+              {gamesdataList.map((val) => (
+                <Link href="/gameprice">
+                  <div key={val.game_id} className="group relative">
+                    <button onClick={() => goToGamePrice(val.game_name)}>
+                      <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 ">
+                        <img
+                          src={val.game_image}
+                          alt={val.game_image}
+                          className="w-full h-full object-center object-cover "
+                        />
+                      </div>
+                      <div className="mt-4 flex justify-between">
+                        <div>
+                          <h3 className="text-sm text-gray-700">
+                            <a href={val.href}>
+                              <span
+                                aria-hidden="true"
+                                className="absolute inset-0"
+                              />
+                              {val.game_name}
+                            </a>
+                          </h3>
+                        </div>
+                        <p className="text-sm font-medium text-gray-900">
+                          ราคาถูกสุด {val.now_price} บาท
+                        </p>
+                      </div>
+                    </button>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </main>
       </div>
-      {/* //////////////////////////////////////////////////////////////////////////////// */}
     </div>
   );
 }
