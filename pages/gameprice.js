@@ -169,11 +169,11 @@ function favorite() {
                         ร้านค้า
                       </th>
                       <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
-                      ราคา(บาท)
+                      ราคาก่อนแปลงค่า
                       </th>
-                      {/* <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                         ราคา(บาท)
-                      </th> */}
+                      </th>
                       <th class="py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100"></th>
                     </tr>
                   </thead>
@@ -181,8 +181,8 @@ function favorite() {
                   <tbody>
                     <tr>
                       <td class="px-4 py-3">{val.market_name}</td>
-                      {/* <td class="px-4 py-3">$10</td> */}
-                      <td class="px-4 py-3" >{val.now_price}</td>
+                      <td class="px-4 py-3">{val.market_id == '9' && val.before_price != 0  ? "$ " + val.before_price : val.market_id == '10' && val.before_price != null || val.market_id == '13' && val.before_price != 0 ? "€ " + val.before_price  : "" }</td>
+                      <td class="px-4 py-3" >{val.now_price != null ? val.now_price : 'out of stock'}</td>
                       <td class="px-4 py-3 ">
                         <a target="_blank" href={val.market_url}>
                         <button className="text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
@@ -227,18 +227,14 @@ function favorite() {
               <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
                 สเปคขั้นต่ำ
               </h1>
-              <p class="leading-relaxed text-base">
-                {val.spec_minimum}
-              </p>
+              <p class="leading-relaxed text-base" dangerouslySetInnerHTML={{ __html: val.spec_minimum }}></p>
             </div>
 
             <div class="flex flex-col md:w-1/2 md:pl-12 md:pl-8 md:pr-17">
               <h class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
                 สเปคแนะนำ
               </h>
-              <p class="leading-relaxed text-base">
-              {val.spec_recommend}
-              </p>
+              <p class="leading-relaxed text-base" dangerouslySetInnerHTML={{ __html: val.spec_recommend }}></p>
             </div>
             
           </div>
