@@ -131,6 +131,20 @@ app.get("/priceList/:gameName", (req,res) => {
   });
 });
 
+//gameTagSearch
+app.get("/gameTagSearch/:gameTag", (req,res) => {
+  const gameTag = req.params.gameTag;
+  db.query("select gd.game_name,gm.game_image,min(pc.now_price) as now_price from games_data gd inner join games_tags_data gtd on (gd.game_id=gtd.game_id) inner join tags_data td on (gtd.tag_id = td.tag_id ) inner join games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) where td.tag_name LIKE '%"+gameTag+"%' group by gd.game_id  ",
+   [gameTag],
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } 
+    else {
+      res.send(result);
+    }
+  })
+});
 
 
 //register

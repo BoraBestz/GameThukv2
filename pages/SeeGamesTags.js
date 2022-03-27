@@ -6,17 +6,24 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import PageTitle from "../components/PageTitle";
 
-function SeeAllNewGames() {
+function SeeGamesTags() {
   //เปลี่ยนแปลงค่า store
   const ditpatch = useDispatch();
 
   //เข้าถึง store
   const best = useSelector((state) => ({ ...state }));
-  const [gamesNewDataList, setGamesNewDataList] = useState([]);
+  const [gamesTagDataList, setGamesTagDataList] = useState([]);
+  const [gameTag, setGameTag] = useState("");
+
   useEffect(() => {
-    Axios.get("http://localhost:3001/games_new_all").then((response) => {
-      setGamesNewDataList(response.data);
-    });
+    setGameTag(best.game);
+    if (gameTag != null) {
+      Axios.get("http://localhost:3001/gameTagSearch/" + best.game, {}).then(
+        (response) => {
+          setGamesTagDataList(response.data);
+        }
+      );
+    }
   }, []);
 
   const goToGamePrice = (gameName) => {
@@ -25,16 +32,16 @@ function SeeAllNewGames() {
       payload: gameName,
     });
   };
-
   return (
     <div className="">
       <Navbar />
       <div className="flex justify-center items-center flex-col pt-40 text-center lg:text-4xl text-5xl space-y-2">
-        <PageTitle text="เกมใหม่ล่าสุดทั้งหมด" />
-        </div>
-        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <PageTitle text="ผลการค้นหาแท็กเกม" />
+        <h2> {best.game} </h2>
+      </div>
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {gamesNewDataList.map((val) => (
+          {gamesTagDataList.map((val) => (
             <Link href="/gameprice">
               <div key={val.game_id} className="group relative">
                 <button onClick={() => goToGamePrice(val.game_name)}>
@@ -71,4 +78,4 @@ function SeeAllNewGames() {
   );
 }
 
-export default SeeAllNewGames;
+export default SeeGamesTags;

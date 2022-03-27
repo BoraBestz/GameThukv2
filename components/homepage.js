@@ -15,6 +15,7 @@ function homepage() {
   const best = useSelector((state) => ({ ...state }));
   const [gamesPopularDataList, setGamesPopularDataList] = useState([]);
   const [gamesNewDataList, setGamesNewDataList] = useState([]);
+  const [gameTag, setGameTag] = useState("");
   useEffect(() => {
     Axios.get("http://localhost:3001/click_count_top12").then((response) => {
       setGamesPopularDataList(response.data);
@@ -31,9 +32,17 @@ function homepage() {
       type: "CLICK_GAME",
       payload: gameName,
     });
-    // window.location.href = '/gameprice/{game_id}';
   };
-  console.log("homepage");
+
+  const goToGameTags = (gameTag) => {
+    if (gameTag.length > 0) {
+      ditpatch({
+        type: "SEARCH",
+        payload: gameTag,
+      });
+    }
+  };
+  
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
@@ -54,7 +63,10 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      
+                      onChange={() => {
+                        setGameTag("แอ็คชัน");
+                      }}
                     />
                   </div>
                 </a>
@@ -72,7 +84,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("ผจญภัย");
+                      }}
                     />
                   </div>
                 </a>
@@ -90,7 +104,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("เกมสวมบทบาท");
+                      }}
                     />
                   </div>
                 </a>
@@ -108,7 +124,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("แคชชวล");
+                      }}
                     />
                   </div>
                 </a>
@@ -126,7 +144,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("อินดี้");
+                      }}
                     />
                   </div>
                 </a>
@@ -144,7 +164,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("จำลองสถานการณ์");
+                      }}
                     />
                   </div>
                 </a>
@@ -162,7 +184,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("กีฬา");
+                      }}
                     />
                   </div>
                 </a>
@@ -180,7 +204,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("เล่นระหว่างการพัฒนา");
+                      }}
                     />
                   </div>
                 </a>
@@ -198,7 +224,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("แข่งความเร็ว");
+                      }}
                     />
                   </div>
                 </a>
@@ -216,7 +244,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("กลยุทธ์");
+                      }}
                     />
                   </div>
                 </a>
@@ -234,7 +264,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("ผู้เล่นหลายคนจำนวนมาก");
+                      }}
                     />
                   </div>
                 </a>
@@ -252,7 +284,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("แอนิเมชันและการสร้างโมเดล");
+                      }}
                     />
                   </div>
                 </a>
@@ -270,7 +304,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("แอนิเมชันแการออกแบบและภาพประกอบละการสร้างโมเดล");
+                      }}
                     />
                   </div>
                 </a>
@@ -288,7 +324,9 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("การแก้ไขรูปภาพ");
+                      }}
                     />
                   </div>
                 </a>
@@ -306,18 +344,23 @@ function homepage() {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
+                      onChange={() => {
+                        setGameTag("ยูทิลิตี้");
+                      }}
                     />
                   </div>
                 </a>
               </li>
               <div className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700"></div>
+              <Link href="SeeGamesTags">
               <button
                 type="button"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                onClick= {goToGameTags(gameTag)}
               >
                 ค้นหา
               </button>
+              </Link>
             </ul>
           </div>
         </aside>
@@ -376,14 +419,14 @@ function homepage() {
               <div class=" flex flex-col gap-4 mt-50 w-80 mx-auto">
                 <Link href="SeeAllPopularGames">
                   <button type="button" class="justify-center items-center rounded-md flex py-2.5 px-5 mr-2 mb-2 text-4l font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">ดูทั้งหมด <svg
-                  
+
                       class="w-4 h-4 ml-2"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      stroke-width="2"
+                      strokewidth="2"
                       fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokelinecap="round"
+                      strokelinejoin="round"
                     >
                       <path d="M5 12h14"></path>
                       <path d="M12 5l7 7-7 7"></path>
@@ -433,14 +476,14 @@ function homepage() {
               <div class=" flex flex-col gap-4 mt-50 w-80 mx-auto">
                 <Link href="SeeAllNewGames">
                   <button type="button" class="justify-center items-center rounded-md flex py-2.5 px-5 mr-2 mb-2 text-4l font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">ดูทั้งหมด <svg
-                  
+
                       class="w-4 h-4 ml-2"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      stroke-width="2"
+                      strokewidth="2"
                       fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokelinecap="round"
+                      strokelinejoin="round"
                     >
                       <path d="M5 12h14"></path>
                       <path d="M12 5l7 7-7 7"></path>

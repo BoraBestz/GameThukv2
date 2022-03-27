@@ -38,6 +38,13 @@ function navbar() {
     }
   }
 
+  const checkUserLogin = () => {
+    if (best.user == null) {
+      alert("กรุณาเข้าสู่ระบบก่อน")
+      window.location.href = '/login';
+     }
+  }
+
   return (
     <nav className=" bg-blue-50 shadow-sm fixed w-full z-10">
 
@@ -102,11 +109,13 @@ function navbar() {
                 </Link>
 
                 <Link href="/favorite">
-                  <a>
-                    <div className="cursor-pointer text-blue-600 font-semibold px-3 py-2 text-md hover:font-black">
+                <button
+                    type="button"
+                    className="cursor-pointer text-blue-600 font-semibold px-3 py-2 text-md hover:font-black"
+                    onClick= {checkUserLogin}
+                    >
                       ติดตามเกม
-                    </div>
-                  </a>
+                    </button>
                 </Link>
 
                 <a>
