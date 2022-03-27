@@ -6,25 +6,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import PageTitle from "../components/PageTitle";
 
-function SearchGameList() {
-  const [gamesdataList, setGamesdataList] = useState([]);
-  const [gameName, setgameName] = useState("");
+function SeeAllPopularGames() {
   //เปลี่ยนแปลงค่า store
   const ditpatch = useDispatch();
 
   //เข้าถึง store
   const best = useSelector((state) => ({ ...state }));
-
+  const [gamesPopularDataList, setGamesPopularDataList] = useState([]);
+  const [gamesNewDataList, setGamesNewDataList] = useState([]);
   useEffect(() => {
-    setgameName(best.game);
-    if (gameName != null) {
-      Axios.get("http://localhost:3001/search/" + best.game, {}).then(
-        (response) => {
-          setGamesdataList(response.data);
-          console.log(gamesdataList);
-        }
-      );
-    }
+    Axios.get("http://localhost:3001/click_count_all").then((response) => {
+      setGamesPopularDataList(response.data);
+    });
   }, []);
 
   const goToGamePrice = (gameName) => {
@@ -39,15 +32,13 @@ function SearchGameList() {
     <div className="">
       <Navbar />
       <div className="flex justify-center items-center flex-col pt-40 text-center lg:text-4xl text-5xl space-y-2">
-        <PageTitle text="ผลการค้นหา!" />
-        <h2> {best.game} </h2>
+        <PageTitle text="เกมยอดนิยมทั้งหมด" />
       </div>
-      <div className="mt-6 grid grid-cols-1 gap-y-20 gap-x-6 ">
-        <div className="max-w-2xl mx-auto py-30 px-4 ">
-          {gamesdataList.map((val) => (
-            <Link href="/gameprice">
-              <div key={val.game_id} className="group relative">
-                <button onClick={() => goToGamePrice(val.game_name)}>
+      <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+        {gamesPopularDataList.map((val) => (
+          <Link href="/gameprice">
+            <div key={val.game_id} className="group relative">
+              <button onClick={() => goToGamePrice(val.game_name)}>
                 <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 ">
                   <img
                     src={val.game_image}
@@ -68,15 +59,13 @@ function SearchGameList() {
                     ราคาถูกสุด {val.now_price} บาท
                   </p>
                 </div>
-                <br></br>
-                </button>
-              </div>
-              
-            </Link>
-          ))}
-        </div>
+              </button>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
 }
-export default SearchGameList;
+
+export default SeeAllPopularGames;

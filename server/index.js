@@ -14,9 +14,9 @@ const db = mysql.createConnection({
 });
 module.exports = mysql;
 
-//listgamename picture price
-app.get("/games_data", (req, res) => {
-    db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE pc.now_price > 0 group by gd.game_id", (err, result) => {
+//listAllNewGame
+app.get("/games_new_all", (req, res) => {
+    db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE pc.now_price > 0 group by gd.game_id order by date desc ", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -25,9 +25,9 @@ app.get("/games_data", (req, res) => {
     });
 });
 
-//listpicturegame
-app.get("/games_media", (req, res) => {
-  db.query("SELECT * FROM games_media", (err, result) => {
+//listNewGame TOP 12
+app.get("/games_new_top12", (req, res) => {
+  db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE pc.now_price > 0 group by gd.game_id order by date desc LIMIT 0, 12 ", (err, result) => {
     if (err) {
       console.log(err);
     } else {
@@ -36,9 +36,20 @@ app.get("/games_media", (req, res) => {
   });
 });
 
-//listpricegame
-app.get("/games_price_home", (req, res) => {
-  db.query("SELECT pc.game_id,pc.now_price FROM price_check pc INNER JOIN games_data gd on (gd.game_id = pc.game_id", (err, result) => {
+//listClick_CountAllGame
+app.get("/click_count_all", (req, res) => {
+  db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE pc.now_price > 0 group by gd.game_id order by click_count desc ", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+//listClick_CountGame TOP 12
+app.get("/click_count_top12", (req, res) => {
+  db.query("SELECT gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as now_price FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) WHERE pc.now_price > 0 group by gd.game_id order by click_count desc LIMIT 0, 12", (err, result) => {
     if (err) {
       console.log(err);
     } else {

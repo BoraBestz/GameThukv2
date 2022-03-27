@@ -71,7 +71,7 @@ function navbar() {
                   <button 
                     type="button"
                     className="bg-white flex items-center justify-center px-4 border-l"
-                    onClick= {handleKeypress}
+                    onClick= {getGamesdata}
                     onKeyPress={handleKeypress}
                     
                   >
