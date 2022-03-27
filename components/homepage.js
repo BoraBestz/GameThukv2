@@ -373,11 +373,23 @@ function homepage() {
                 </Link>
               ))}
               <br></br>
-              <Link href="SeeAllPopularGames">
-                <button className="max-w-xl text-center px-2 mx-auto text-4l text-blue-600">
-                  ดูทั้งหมด
-                </button>
-              </Link>
+              <div class=" flex flex-col gap-4 mt-50 w-80 mx-auto">
+                <Link href="SeeAllPopularGames">
+                  <button type="button" class="justify-center items-center rounded-md flex py-2.5 px-5 mr-2 mb-2 text-4l font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">ดูทั้งหมด <svg
+                  
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg></button>
+                </Link>
+              </div>
             </div>
 
             <div className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700"></div>
@@ -418,11 +430,23 @@ function homepage() {
                 </Link>
               ))}
               <br></br>
-              <Link href="SeeAllNewGames">
-                <button className="max-w-xl text-center px-2 mx-auto text-4l text-blue-600">
-                  ดูทั้งหมด
-                </button>
-              </Link>
+              <div class=" flex flex-col gap-4 mt-50 w-80 mx-auto">
+                <Link href="SeeAllNewGames">
+                  <button type="button" class="justify-center items-center rounded-md flex py-2.5 px-5 mr-2 mb-2 text-4l font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">ดูทั้งหมด <svg
+                  
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg></button>
+                </Link>
+              </div>
             </div>
           </div>
         </main>

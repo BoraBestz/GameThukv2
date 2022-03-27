@@ -34,7 +34,8 @@ function SeeAllPopularGames() {
       <div className="flex justify-center items-center flex-col pt-40 text-center lg:text-4xl text-5xl space-y-2">
         <PageTitle text="เกมยอดนิยมทั้งหมด" />
       </div>
-      <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {gamesPopularDataList.map((val) => (
           <Link href="/gameprice">
             <div key={val.game_id} className="group relative">
@@ -63,6 +64,7 @@ function SeeAllPopularGames() {
             </div>
           </Link>
         ))}
+      </div>
       </div>
     </div>
   );

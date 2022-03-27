@@ -7,33 +7,35 @@ import { useEffect } from "react";
 import PageTitle from "../components/PageTitle";
 
 function SeeAllNewGames() {
-    //เปลี่ยนแปลงค่า store
-    const ditpatch = useDispatch();
-  
-    //เข้าถึง store
-    const best = useSelector((state) => ({ ...state }));
-    const [gamesNewDataList, setGamesNewDataList] = useState([]);
-    useEffect(() => {
-      Axios.get("http://localhost:3001/click_count_all").then((response) => {
-        setGamesNewDataList(response.data);
-      });
-    }, []);
-  
-    const goToGamePrice = (gameName) => {
-      ditpatch({
-        type: "CLICK_GAME",
-        payload: gameName,
-      });
-      // window.location.href = '/gameprice/{game_id}';
-    };
-  
-    return (
-      <div className="">
-        <Navbar />
-        <div className="flex justify-center items-center flex-col pt-40 text-center lg:text-4xl text-5xl space-y-2">
+  //เปลี่ยนแปลงค่า store
+  const ditpatch = useDispatch();
+
+  //เข้าถึง store
+  const best = useSelector((state) => ({ ...state }));
+  const [gamesNewDataList, setGamesNewDataList] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3001/click_count_all").then((response) => {
+      setGamesNewDataList(response.data);
+    });
+  }, []);
+
+  const goToGamePrice = (gameName) => {
+    ditpatch({
+      type: "CLICK_GAME",
+      payload: gameName,
+    });
+    // window.location.href = '/gameprice/{game_id}';
+  };
+
+  return (
+    <div className="">
+      <Navbar />
+      <div className="flex justify-center items-center flex-col pt-40 text-center lg:text-4xl text-5xl space-y-2">
           <PageTitle text="เกมใหม่ล่าสุดทั้งหมด" />
         </div>
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        
+        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {gamesNewDataList.map((val) => (
             <Link href="/gameprice">
               <div key={val.game_id} className="group relative">
@@ -49,7 +51,10 @@ function SeeAllNewGames() {
                     <div>
                       <h3 className="text-sm text-gray-700">
                         <a href={val.href}>
-                          <span aria-hidden="true" className="absolute inset-0" />
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0"
+                          />
                           {val.game_name}
                         </a>
                       </h3>
@@ -64,8 +69,8 @@ function SeeAllNewGames() {
           ))}
         </div>
       </div>
-    );
-  }
-  
-  export default SeeAllNewGames;
-  
+    </div>
+  );
+}
+
+export default SeeAllNewGames;
