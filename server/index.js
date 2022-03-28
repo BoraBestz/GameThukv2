@@ -75,7 +75,7 @@ app.get("/search/:gameName", (req,res) => {
 //gameDetail
 app.get("/gameprice/:gameName", (req,res) => {
   const gameName = req.params.gameName;
-  db.query("SELECT gd.click_count,gd.game_id,gd.game_name,gd.game_description,gd.release_date,gd.developer,gd.publisher,gd.required_age,gm.screenshots_1,gm.screenshots_2,gm.screenshots_3,gm.screenshots_4,screenshots_5,movies,min(pc.now_price) as lowest_price,gs.spec_minimum,gs.spec_recommend FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) INNER JOIN games_spec gs on (gs.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"%' group by gd.game_id ",
+  db.query("SELECT gd.click_count,gd.game_id,gd.game_name,gd.game_description,gd.release_date,gd.developer,gd.publisher,gd.required_age,gm.screenshots_1,gm.screenshots_2,gm.screenshots_3,gm.screenshots_4,screenshots_5,movies,min(pc.now_price) as lowest_price,gs.spec_minimum,gs.spec_recommend FROM games_data gd INNER JOIN games_media gm on (gd.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gd.game_id) INNER JOIN games_spec gs on (gs.game_id = gd.game_id) WHERE gd.game_name LIKE '%"+gameName+"%' and pc.now_price > 0 group by gd.game_id ",
    [gameName],
   (err, result) => {
     if (err) {
@@ -163,7 +163,7 @@ app.post("/subscribeGame", (req,res) => {
 //favoriteGame
 app.get("/favoriteGame/:userId", (req,res) => {
   const userId = req.params.userId
-  db.query("select gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as lowest_price,ul.sale_price,ul.user_id from user_library ul inner join games_media gm on (ul.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gm.game_id) INNER JOIN user_data ud on (ud.user_id = ul.user_id) INNER JOIN games_data gd on (gd.game_id  = gm.game_id) where ul.user_id LIKE '%"+userId+"%' group by gd.game_id",
+  db.query("select gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as lowest_price,ul.sale_price,ul.user_id from user_library ul inner join games_media gm on (ul.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gm.game_id) INNER JOIN user_data ud on (ud.user_id = ul.user_id) INNER JOIN games_data gd on (gd.game_id  = gm.game_id) where ul.user_id LIKE '%"+userId+"%' and pc.now_price > 0 group by gd.game_id",
    [userId],
   (err, result) => {
     if (err) {
