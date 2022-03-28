@@ -1,9 +1,63 @@
 import Navbar from "../components/navbar";
 import Link from "next/link";
-import React, { useState } from "react";
+import Axios from "axios";
+import { useState, useRef, Component } from "react";
+import Image from "next/image";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function favorite() {
   const [show, setShow] = useState(null);
+
+  //เข้าถึง store
+  const best = useSelector((state) => ({ ...state }));
+  const [gameFavoriteList, setGameFavoriteList] = useState([]);
+  const [userDataList, setUserDataList] = useState([]);
+  const [userNeedPrice, setUserNeedPrice] = useState("");
+
+  useEffect(async() => {
+    if (best.user != null){
+      await Axios.get("http://localhost:3001/user/"+ best.user, {
+      }).then((response) => {
+        setUserDataList(response.data)
+        showFavorite();
+      });
+    }
+  }, []);
+
+  const showFavorite = () => {
+      if (userDataList.length > 0){
+          Axios.get("http://localhost:3001/favoriteGame/"+ userDataList[0].user_id, {
+        }).then((response) => {
+            setGameFavoriteList(response.data);
+            
+        }); 
+      }
+  }
+
+  const notifyPrice = (userNeedPrice,gameId) => {
+    if (userNeedPrice.length > 0){
+      Axios.post("http://localhost:3001/updatePriceNotifyGame/", {
+        userNeedPrice: userNeedPrice,
+        gameId: gameId,
+        userId: userDataList[0].user_id,
+        }).then((response) => {
+            
+        }); 
+    }
+  }
+
+  const deleteFavoriteGame = (gameId) => {
+    Axios.post("http://localhost:3001/deleteFavoriteGame", {
+      gameId: gameId,
+      userId: userDataList[0].user_id,
+    }).then((response) => {
+      console.log(gameId)
+    }); 
+  }
+  console.log(userNeedPrice)
   return (
     <>
       <Navbar />
@@ -13,6 +67,11 @@ function favorite() {
             <p className="text-base sm:text-4l md:text-4xl lg:text-4xl leading-normal text-gray-800">
               เกมที่ติดตาม
             </p>
+            <br></br>
+            <button className="text-base sm:text-2l md:text-2xl lg:text-2xl leading-normal bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-black"
+            onClick={showFavorite}>
+              ตรวจสอบ
+            </button>
           </div>
         </div>
         <div className="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
@@ -22,7 +81,7 @@ function favorite() {
                 <th className="font-normal text-left pl-4">เกม</th>
                 <th className="font-normal text-left pl-12">ราคาถูกสุด</th>
                 <th className="font-normal text-left pl-12">
-                  แจ้งเตือนเมื่อราคาถูกกว่าปัจจุบัน
+                  ราคาที่ต้องการให้แจ้งเตือน
                 </th>
                 <th className="font-normal text-left pl-20">
                   แจ้งเตือนเมื่อราคาถูกกว่าราคาที่กำหนด
@@ -32,35 +91,36 @@ function favorite() {
             </thead>
             <tbody className="w-full">
               {/* -------------------------------------เริ่มแถว----------------------------------- */}
-              <tr className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
+            {gameFavoriteList.map((val) => (
+              <tr key={val.game_id} className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
                 <td className="pl-4 cursor-pointer">
                   <div className="flex items-center">
                     <div className="w-15 h-10 ">
                       <img
                         className="w-full h-full object-center object-cover"
-                        src="https://cdn.akamai.steamstatic.com/steam/apps/1593500/header.jpg?t=1642526157"
+                        src={val.game_image}
                       />
                     </div>
                     <div className="pl-4">
-                      <p className="font-medium">God of War</p>
+                      <p className="font-medium">{val.game_name}</p>
                     </div>
                   </div>
                 </td>
                 <td className="pl-12">
                   <p className="text-sm font-medium leading-none text-gray-800">
-                    999 <a className="font-medium text-gray-600 ml-2">บาท</a>
+                  {val.lowest_price} <a className="font-medium text-gray-600 ml-2">บาท</a>
                   </p>
                 </td>
                 <td className="pl-12 text-blue-600">
                   <p className="font-medium">
-                    <input
+                    {/* <input
                       id="remember"
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                       required
-                    />
-                    <a className="ml-2">999</a>
+                    /> */}
+                    <a className="ml-2">{val.sale_price}</a>
                     <a className="font-medium text-gray-600 ml-2">บาท</a>
                   </p>
                 </td>
@@ -68,19 +128,25 @@ function favorite() {
                   <p className="font-medium">
                     <div className="">
                       <input
-                        id="remember"
-                        aria-describedby="remember"
-                        type="checkbox"
-                        class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                        required
-                      />
-
-                      <input
                         class=" ml-3 py-2.5 px-0 w-25 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer "
                         placeholder=" "
                         required
+                        onChange={(event) => {
+                          setUserNeedPrice(event.target.value)
+                        }}
                       />
                       <a className="font-medium text-gray-600 ml-2">บาท</a>
+
+                      <button
+                        type="button"
+                        class="ml-5 py10 text-white bg-blue-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                        required
+                        onClick={() => {
+                          notifyPrice(userNeedPrice,val.game_id)
+                        }}
+                      >
+                        ยืนยัน
+                      </button>
                     </div>
                   </p>
                 </td>
@@ -88,73 +154,13 @@ function favorite() {
                   <button
                     type="button"
                     class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                    onClick={() => deleteFavoriteGame(val.game_id)}
                   >
                     เลิกติดตาม
                   </button>
                 </td>
               </tr>
-              {/* ---------------------------จบหนึ่งแถว--------------------------------- */}
-              <tr className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
-                <td className="pl-4 cursor-pointer">
-                  <div className="flex items-center">
-                    <div className="w-15 h-10 ">
-                      <img
-                        className="w-full h-full object-center object-cover"
-                        src="https://cdn.akamai.steamstatic.com/steam/apps/1593500/header.jpg?t=1642526157"
-                      />
-                    </div>
-                    <div className="pl-4">
-                      <p className="font-medium">God of War</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="pl-12">
-                  <p className="text-sm font-medium leading-none text-gray-800">
-                    999 <a className="font-medium text-gray-600 ml-2">บาท</a>
-                  </p>
-                </td>
-                <td className="pl-12 text-blue-600">
-                  <p className="font-medium">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
-                    />
-                    <a className="ml-2">999</a>
-                    <a className="font-medium text-gray-600 ml-2">บาท</a>
-                  </p>
-                </td>
-                <td className="pl-20">
-                  <p className="font-medium">
-                    <div className="">
-                      <input
-                        id="remember"
-                        aria-describedby="remember"
-                        type="checkbox"
-                        class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                        required
-                      />
-
-                      <input
-                        class=" ml-3 py-2.5 px-0 w-25 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer "
-                        placeholder=" "
-                        required
-                      />
-                      <a className="font-medium text-gray-600 ml-2">บาท</a>
-                    </div>
-                  </p>
-                </td>
-                <td className="pl-20">
-                  <button
-                    type="button"
-                    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                  >
-                    เลิกติดตาม
-                  </button>
-                </td>
-              </tr>
+            ))}
             </tbody>
           </table>
         </div>

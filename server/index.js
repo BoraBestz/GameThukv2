@@ -111,8 +111,6 @@ app.get("/tagsList/:gameName", (req,res) => {
     } 
     else {
       res.send(result);
-      // db.query("select click_count from games_data gd where gd.game_name LIKE '%"+gameName+"%' ",[gameName],
-      
     }
   })
 });
@@ -146,6 +144,82 @@ app.get("/gameTagSearch/:gameTag", (req,res) => {
   })
 });
 
+//subscribeGame
+app.post("/subscribeGame", (req,res) => {
+  const gameId = req.body.gameId;
+  const gamePrice = req.body.gamePrice;
+  const userId = req.body.userId
+  db.query("INSERT INTO user_library (game_id, sale_price, user_id) VALUES (?,?,?)",
+  [gameId, gamePrice, userId],
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send("Values Inserted");
+    }
+  });
+});
+
+//favoriteGame
+app.get("/favoriteGame/:userId", (req,res) => {
+  const userId = req.params.userId
+  db.query("select gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as lowest_price,ul.sale_price,ul.user_id from user_library ul inner join games_media gm on (ul.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gm.game_id) INNER JOIN user_data ud on (ud.user_id = ul.user_id) INNER JOIN games_data gd on (gd.game_id  = gm.game_id) where ul.user_id LIKE '%"+userId+"%' group by gd.game_id",
+   [userId],
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } 
+    else {
+      res.send(result);
+    }
+  })
+});
+
+//deleteFavoriteGame
+app.post("/deleteFavoriteGame", (req,res) => {
+  const gameId = req.body.gameId
+  const userId = req.body.userId
+  db.query(`Delete FROM user_library WHERE game_id = ${gameId} and user_id = ${userId} `,
+   [gameId, userId],
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } 
+    else {
+      res.send(result);
+    }
+  })
+});
+
+//updatePriceNotifyGame
+app.post("/updatePriceNotifyGame", (req,res) => {
+  const userNeedPrice = req.body.userNeedPrice
+  const gameId = req.body.gameId
+  const userId = req.body.userId
+  db.query(`UPDATE user_library SET sale_price = ${userNeedPrice} WHERE game_id = ${gameId} and user_id = ${userId} `,
+   [userNeedPrice, gameId, userId],
+  (err, result) => {
+    if (err) {
+      console.log(err);
+    } 
+    else {
+      res.send(result);
+    }
+  })
+});
+
+//findUser
+app.get("/user/:username", (req, res) =>{
+  const username = req.params.username;
+  db.query("SELECT user_id FROM user_data gd WHERE username LIKE '"+username+"' ",
+   [username],(err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+});
 
 //register
 app.post("/register", (req, res) => {
@@ -166,6 +240,8 @@ app.post("/register", (req, res) => {
     }
   );
 });
+
+
 
 //login
 app.post("/login", (req, res) =>{

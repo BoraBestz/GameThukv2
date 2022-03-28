@@ -14,7 +14,7 @@ function favorite() {
   const [gamesdataList, setGamesdataList] = useState([]);
   const [gamesPriceList, setGamesPriceList] = useState([]);
   const [gamesTagsList, setgamesTagsList] = useState([]);
-  const [gamesList, setgamesList] = useState([]);
+  const [userDataList, setUserDataList] = useState([]);
   
 
   useEffect(async() => {
@@ -41,10 +41,40 @@ function favorite() {
   useEffect(() => {
     Axios.get("http://localhost:3001/gamecount/"+ best.game, {
       }).then((response) => {
-        // console.log(response)
+        
       }); 
   }, []);
 
+  useEffect(() => {
+    if (best.user != null){
+    Axios.get("http://localhost:3001/user/"+ best.user, {
+      }).then((response) => {
+        setUserDataList(response.data)
+      }); 
+    }
+  }, []);
+  
+  const addFavorite = () => {
+    if (best.user != null){
+      Axios.post("http://localhost:3001/subscribeGame/", {
+          gameId: gamesdataList[0].game_id,
+          gamePrice: gamesdataList[0].lowest_price,
+          userId: userDataList[0].user_id,
+        }).then(() => {
+        });
+        alert("คุณได้ติดตามเกม"+gamesdataList[0].game_name)
+    }
+    else{
+      alert("กรุณาเข้าสู่ระบบก่อน")
+      window.location.href = '/login'
+    }
+  }
+  // console.log(gamesdataList[0])
+  if (userDataList.length > 0){
+    console.log("user id: "+userDataList[0].user_id)
+    console.log("price : "+gamesdataList[0].lowest_price)
+    console.log("game id: "+gamesdataList[0].game_id)
+  }
   return (
     <div className="">
       
@@ -148,8 +178,9 @@ function favorite() {
                 </span>
 
                 {/* ปุ่มก่อนกดติดตาม */}
-                <button class="flex ml-auto mr-10 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
-                  ติดตาม
+                <button class="flex ml-auto mr-10 text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                onClick={addFavorite}>
+                  ติดตาม 💓
                 </button>
                 {/* ปุ่มหลังจากกดติดตามไปแล้ว */}
                 {/* <button class="flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded">
