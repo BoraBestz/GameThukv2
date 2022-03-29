@@ -8,6 +8,7 @@ import { Carousel } from "react-responsive-carousel";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
+
 function favorite() {
   const [show, setShow] = useState(null);
 
@@ -16,7 +17,7 @@ function favorite() {
   const [gameFavoriteList, setGameFavoriteList] = useState([]);
   const [userDataList, setUserDataList] = useState([]);
   const [userNeedPrice, setUserNeedPrice] = useState("");
-
+  
   useEffect(async() => {
     if (best.user != null){
       await Axios.get("http://localhost:3001/user/"+ best.user, {

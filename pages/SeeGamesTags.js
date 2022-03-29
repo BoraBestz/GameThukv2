@@ -32,6 +32,7 @@ function SeeGamesTags() {
       payload: gameName,
     });
   };
+  console.log(best.game)
   return (
     <div className="">
       <Navbar />

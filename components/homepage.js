@@ -15,7 +15,7 @@ function homepage() {
   const best = useSelector((state) => ({ ...state }));
   const [gamesPopularDataList, setGamesPopularDataList] = useState([]);
   const [gamesNewDataList, setGamesNewDataList] = useState([]);
-  const [gameTag, setGameTag] = useState("");
+  const [gameTag, setGameTag] = useState([]);
   useEffect(() => {
     Axios.get("http://localhost:3001/click_count_top12").then((response) => {
       setGamesPopularDataList(response.data);
@@ -41,8 +41,11 @@ function homepage() {
         payload: gameTag,
       });
     }
+    
   };
   
+  console.log(gameTag)
+
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
@@ -65,7 +68,7 @@ function homepage() {
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                       
                       onChange={() => {
-                        setGameTag("แอ็คชัน");
+                        setGameTag("แอ็คชัน")
                       }}
                     />
                   </div>
@@ -85,7 +88,7 @@ function homepage() {
                       type="checkbox"
                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                       onChange={() => {
-                        setGameTag("ผจญภัย");
+                        setGameTag("ผจญภัย")
                       }}
                     />
                   </div>
