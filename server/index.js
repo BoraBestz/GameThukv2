@@ -160,6 +160,27 @@ app.post("/subscribeGame", (req,res) => {
   });
 });
 
+//getDataFavoriteGame
+app.post("/getDataFavoriteGame", (req,res) => {
+  const gameId = req.body.gameId
+  const userId = req.body.userId
+  db.query("SELECT * FROM user_library WHERE game_id = ? and user_id = ? ",
+   [gameId, userId],
+  (err, result) => {
+    if (err) {
+      res.send({err:err});
+    } 
+
+    if (result.length > 0){
+      res.send(result);
+      console.log(result)
+    } else {
+      res.status(200).json({ message: 'คุณติดตามเกมไว้อยู่แล้ว' })
+      console.log("คุณติดตามเกมไว้อยู่แล้ว")
+    }
+  })
+});
+
 //favoriteGame
 app.get("/favoriteGame/:userId", (req,res) => {
   const userId = req.params.userId
@@ -267,6 +288,20 @@ app.post("/login", (req, res) =>{
     }
   );
 });
+
+//sendEmailNotify
+app.get("/sendEmail/:userName", (req, res) =>{
+  const userName = req.params.userName;
+  db.query("SELECT email FROM user_data gd WHERE username LIKE '"+username+"' ",
+   [username],(err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  })
+});
+
 
 app.listen(3001, () => {
     console.log("Yey, your server is running on port 3001");
