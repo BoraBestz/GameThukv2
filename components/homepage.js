@@ -15,7 +15,6 @@ function homepage() {
   const best = useSelector((state) => ({ ...state }));
   const [gamesPopularDataList, setGamesPopularDataList] = useState([]);
   const [gamesNewDataList, setGamesNewDataList] = useState([]);
-  const [gameTag, setGameTag] = useState([]);
   useEffect(() => {
     Axios.get("http://localhost:3001/click_count_top12").then((response) => {
       setGamesPopularDataList(response.data);
@@ -44,8 +43,6 @@ function homepage() {
     
   };
   
-  console.log(gameTag)
-
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
@@ -55,307 +52,304 @@ function homepage() {
           <div class="sidebar-content px-4 py-6 space-y-2">
             <ul class="flex flex-col w-full">
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("แอ็คชัน")
+                  }}
                 >
-                  <span class="ml-3">แอ็คชัน</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    แอ็คชัน</button>
+                  {/* <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
                     <input
                       id="remember"
                       aria-describedby="remember"
                       type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                      class=""
                       
                       onChange={() => {
                         setGameTag("แอ็คชัน")
                       }}
                     />
-                  </div>
+                  </div> */}
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("ผจญภัย")
+                  }}
                 >
-                  <span class="ml-3">ผจญภัย</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("ผจญภัย")
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    ผจญภัย</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("เกมสวมบทบาท")
+                  }}
                 >
-                  <span class="ml-3">เกมสวมบทบาท</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("เกมสวมบทบาท");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    เกมสวมบทบาท</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("แคชชวล")
+                  }}
                 >
-                  <span class="ml-3">แคชชวล</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("แคชชวล");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    แคชชวล</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("อินดี้")
+                  }}
                 >
-                  <span class="ml-3">อินดี้</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("อินดี้");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    อินดี้</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("จำลองสถานการณ์")
+                  }}
                 >
-                  <span class="ml-3">จำลองสถานการณ์</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("จำลองสถานการณ์");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    จำลองสถานการณ์</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("กีฬา")
+                  }}
                 >
-                  <span class="ml-3">กีฬา</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("กีฬา");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    กีฬา</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("เล่นระหว่างพัฒนา")
+                  }}
                 >
-                  <span class="ml-3">เล่นระหว่างการพัฒนา</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("เล่นระหว่างการพัฒนา");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    เล่นระหว่างพัฒนา</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("แข่งความเร็ว")
+                  }}
                 >
-                  <span class="ml-3">แข่งความเร็ว</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("แข่งความเร็ว");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    แข่งความเร็ว</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("กลยุทธ์")
+                  }}
                 >
-                  <span class="ml-3">กลยุทธ์</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("กลยุทธ์");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    กลยุทธ์</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("ผู้เล่นหลายคนจำนวนมาก")
+                  }}
                 >
-                  <span class="ml-3">ผู้เล่นหลายคนจำนวนมาก</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("ผู้เล่นหลายคนจำนวนมาก");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    ผู้เล่นหลายคนจำนวนมาก</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("แอนิเมชันและการสร้างโมเดล")
+                  }}
                 >
-                  <span class="ml-3">แอนิเมชันและการสร้างโมเดล</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("แอนิเมชันและการสร้างโมเดล");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    แอนิเมชันและการสร้างโมเดล</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("การออกแบบและภาพประกอบ")
+                  }}
                 >
-                  <span class="ml-3">การออกแบบและภาพประกอบ</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("แอนิเมชันแการออกแบบและภาพประกอบละการสร้างโมเดล");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    การออกแบบและภาพประกอบ</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("การแก้ไขรูปภาพ")
+                  }}
                 >
-                  <span class="ml-3">การแก้ไขรูปภาพ</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("การแก้ไขรูปภาพ");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    การแก้ไขรูปภาพ</button>
                 </a>
+                </Link>
+
               </li>
 
               <li class="my-px">
+              <Link href="/SeeGamesTags">
                 <a
                   href="#"
                   class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                  onClick={() => {
+                    goToGameTags("ยูทิลิตี้")
+                  }}
                 >
-                  <span class="ml-3">ยูทิลิตี้</span>
-                  <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      onChange={() => {
-                        setGameTag("ยูทิลิตี้");
-                      }}
-                    />
-                  </div>
+                  <button 
+                  class="ml-3"
+                  type="button"
+                  >
+                    ยูทิลิตี้</button>
                 </a>
+                </Link>
+
               </li>
+              
               <div className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700"></div>
-              <Link href="SeeGamesTags">
+              {/* <Link href="SeeGamesTags">
               <button
                 type="button"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
@@ -363,7 +357,7 @@ function homepage() {
               >
                 ค้นหา
               </button>
-              </Link>
+              </Link> */}
             </ul>
           </div>
         </aside>
@@ -388,7 +382,7 @@ function homepage() {
             </h2>
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
               {gamesPopularDataList.map((val) => (
-                <Link href="/gameprice">
+                <Link href={"/gameprice"}>
                   <div key={val.game_id} className="group relative">
                     <button onClick={() => goToGamePrice(val.game_name)}>
                       <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 ">

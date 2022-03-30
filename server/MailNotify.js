@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 });
 module.exports = mysql;
 db.query(
-  "SELECT gd.game_name,ul.sale_price ,min(pc.now_price)as lowest_price,pc.market_url,email FROM user_library ul inner join games_data gd on (gd.game_id = ul.game_id ) inner join price_check pc on (gd.game_id = pc.game_id ) inner join user_data ud on (ud.user_id = ul.user_id ) WHERE ul.sale_price > pc.now_price and pc.now_price > 0 and pc.market_id != '11' group by ul.user_library_id ",
+  "SELECT gd.game_name,ul.need_price ,min(pc.now_price)as lowest_price,pc.market_url,email FROM user_library ul inner join games_data gd on (gd.game_id = ul.game_id ) inner join price_check pc on (gd.game_id = pc.game_id ) inner join user_data ud on (ud.user_id = ul.user_id ) WHERE ul.need_price > pc.now_price and pc.now_price > 0 and pc.market_id != '11' group by ul.user_library_id ",
   (err, result) => {
     if (err) {
       console.log(err);

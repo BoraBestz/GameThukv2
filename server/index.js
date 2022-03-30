@@ -149,7 +149,7 @@ app.post("/subscribeGame", (req,res) => {
   const gameId = req.body.gameId;
   const gamePrice = req.body.gamePrice;
   const userId = req.body.userId
-  db.query("INSERT INTO user_library (game_id, sale_price, user_id) VALUES (?,?,?)",
+  db.query("INSERT INTO user_library (game_id, need_price, user_id) VALUES (?,?,?)",
   [gameId, gamePrice, userId],
   (err, result) => {
     if (err) {
@@ -184,7 +184,7 @@ app.post("/getDataFavoriteGame", (req,res) => {
 //favoriteGame
 app.get("/favoriteGame/:userId", (req,res) => {
   const userId = req.params.userId
-  db.query("select gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as lowest_price,ul.sale_price,ul.user_id from user_library ul inner join games_media gm on (ul.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gm.game_id) INNER JOIN user_data ud on (ud.user_id = ul.user_id) INNER JOIN games_data gd on (gd.game_id  = gm.game_id) where ul.user_id LIKE '%"+userId+"%' and pc.now_price > 0 group by gd.game_id",
+  db.query("select gd.game_id,gd.game_name,gm.game_image,min(pc.now_price) as lowest_price,ul.need_price,ul.user_id from user_library ul inner join games_media gm on (ul.game_id=gm.game_id) INNER JOIN price_check pc on (pc.game_id = gm.game_id) INNER JOIN user_data ud on (ud.user_id = ul.user_id) INNER JOIN games_data gd on (gd.game_id  = gm.game_id) where ul.user_id LIKE '%"+userId+"%' and pc.now_price > 0 group by gd.game_id",
    [userId],
   (err, result) => {
     if (err) {
@@ -217,7 +217,7 @@ app.post("/updatePriceNotifyGame", (req,res) => {
   const userNeedPrice = req.body.userNeedPrice
   const gameId = req.body.gameId
   const userId = req.body.userId
-  db.query(`UPDATE user_library SET sale_price = ${userNeedPrice} WHERE game_id = ${gameId} and user_id = ${userId} `,
+  db.query(`UPDATE user_library SET need_price = ${userNeedPrice} WHERE game_id = ${gameId} and user_id = ${userId} `,
    [userNeedPrice, gameId, userId],
   (err, result) => {
     if (err) {

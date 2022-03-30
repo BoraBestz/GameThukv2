@@ -36,7 +36,11 @@ function login() {
             type: "LOGIN",
             payload: response.data[0].username
           });
-  
+          ditpatch({
+            type: "KEEPID",
+            payload: response.data[0].user_id
+          });
+          
         }
       });
       

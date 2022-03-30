@@ -18,42 +18,37 @@ function favorite() {
   const [userDataList, setUserDataList] = useState([]);
   const [userNeedPrice, setUserNeedPrice] = useState("");
   
-  useEffect(async() => {
+  const fetchData = () => {
     if (best.user != null){
-      await Axios.get("http://localhost:3001/user/"+ best.user, {
-      }).then((response) => {
-        setUserDataList(response.data)
-        showFavorite();
-      });
-    }
-  }, []);
-
-  const showFavorite = () => {
-      if (userDataList.length > 0){
-          Axios.get("http://localhost:3001/favoriteGame/"+ userDataList[0].user_id, {
+       Axios.get("http://localhost:3001/favoriteGame/"+ best.userId, {
         }).then((response) => {
             setGameFavoriteList(response.data);
-            
         }); 
-      }
+    }
   }
 
-  const notifyPrice = (userNeedPrice,gameId) => {
+  //auto fetchData if data change
+  useEffect(() => {
+    fetchData();
+    if (fetchData.length) fetchData();
+    }, [fetchData]);
+
+  async function notifyPrice(userNeedPrice,gameId) {
     if (userNeedPrice.length > 0){
-      Axios.post("http://localhost:3001/updatePriceNotifyGame/", {
+      await Axios.post("http://localhost:3001/updatePriceNotifyGame/", {
         userNeedPrice: userNeedPrice,
         gameId: gameId,
-        userId: userDataList[0].user_id,
+        userId: best.userId,
         }).then((response) => {
             
         }); 
     }
   }
 
-  const deleteFavoriteGame = (gameId) => {
-    Axios.post("http://localhost:3001/deleteFavoriteGame", {
+  async function  deleteFavoriteGame(gameId){
+    await Axios.post("http://localhost:3001/deleteFavoriteGame", {
       gameId: gameId,
-      userId: userDataList[0].user_id,
+      userId: best.userId,
     }).then((response) => {
       console.log(gameId)
     }); 
@@ -69,10 +64,6 @@ function favorite() {
               เกมที่ติดตาม
             </p>
             <br></br>
-            <button className="text-base sm:text-2l md:text-2xl lg:text-2xl leading-normal bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-black"
-            onClick={showFavorite}>
-              ตรวจสอบ
-            </button>
           </div>
         </div>
         <div className="bg-white shadow px-4 md:px-10 pt-4 md:pt-7 pb-5 overflow-y-auto">
@@ -82,10 +73,10 @@ function favorite() {
                 <th className="font-normal text-left pl-4">เกม</th>
                 <th className="font-normal text-left pl-12">ราคาถูกสุด</th>
                 <th className="font-normal text-left pl-12">
-                  ราคาที่ต้องการให้แจ้งเตือน
+                  ราคาที่จะแจ้งเตือนหากถูกกว่า
                 </th>
                 <th className="font-normal text-left pl-20">
-                  แจ้งเตือนเมื่อราคาถูกกว่าราคาที่กำหนด
+                  ราคาที่ต้องการให้แจ้งเตือนเมื่อราคาถูกกว่าราคาที่กำหนด
                 </th>
                 <th className="font-normal text-left pl-20">เลิกติดตามเกม</th>
               </tr>
@@ -114,14 +105,8 @@ function favorite() {
                 </td>
                 <td className="pl-12 text-blue-600">
                   <p className="font-medium">
-                    {/* <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                      required
-                    /> */}
-                    <a className="ml-2">{val.sale_price}</a>
+                    
+                    <a className="ml-2">{val.need_price}</a>
                     <a className="font-medium text-gray-600 ml-2">บาท</a>
                   </p>
                 </td>
