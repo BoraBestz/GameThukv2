@@ -72,7 +72,7 @@ function login() {
               type="text"
               className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
               id="email"
-              placeholder="ชื่อผู้ใช้"
+              placeholder="อีเมล์"
               onChange={(event) => {
                 setEmail(event.target.value);
               }}
