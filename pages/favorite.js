@@ -45,13 +45,15 @@ function favorite() {
     }
   }
 
-  async function  deleteFavoriteGame(gameId){
-    await Axios.post("http://localhost:3001/deleteFavoriteGame", {
+  async function  deleteFavoriteGame(gameId,gameName){
+    if (confirm("คุณต้องการเลิกติดตามเกม " + gameName +" ใช่หรือไม่") == true) {
+      await Axios.post("http://localhost:3001/deleteFavoriteGame", {
       gameId: gameId,
       userId: best.userId,
     }).then((response) => {
       console.log(gameId)
     }); 
+    }
   }
   console.log(userNeedPrice)
   return (
@@ -140,7 +142,7 @@ function favorite() {
                   <button
                     type="button"
                     class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                    onClick={() => deleteFavoriteGame(val.game_id)}
+                    onClick={() => deleteFavoriteGame(val.game_id,val.game_name)}
                   >
                     เลิกติดตาม
                   </button>

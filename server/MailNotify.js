@@ -1,3 +1,4 @@
+
 // main.js
 const nodemailer = require("nodemailer");
 const express = require("express");
@@ -42,7 +43,7 @@ db.query(
           const mailOptions = {
             from: '"GameThuk 🎮" <gamethukbot@gmail.com>', // sender
             to: result[i].email, // list of receivers
-            subject: "กำลังมีเกมที่คุณติดตามลดราคา!", // Mail subject
+            subject: "มีเกมที่คุณติดตามกำลังลดราคาอยู่!", // Mail subject
             html: "<b>เกม "+result[i].game_name+" กำลังลดราคาเหลือ "+result[i].lowest_price+" บาท"+"</b>"+ "<br> ซื้อเลยที่เว็บ: "+result[i].market_url, // HTML body
           };
   
