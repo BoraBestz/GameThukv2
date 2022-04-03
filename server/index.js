@@ -262,6 +262,26 @@ app.post("/register", (req, res) => {
   );
 });
 
+//checkRegister
+app.get("/checkRegister/:email", (req,res) => {
+  const email = req.params.email;
+  db.query("SELECT * FROM user_data gd WHERE email LIKE '"+email+"' ",
+  [email],(err, result) => {
+   if (err) {
+     console.log(err);
+   } else {
+    //  res.send(result);
+      if (result.length > 0){
+        res.status(200).json({ message: 'พบอีเมล์' })
+      }
+      else{
+        res.send(result)
+        console.log(email)
+      }
+   }
+ })
+});
+
 
 
 //login
