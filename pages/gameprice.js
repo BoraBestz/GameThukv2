@@ -10,14 +10,14 @@ import { useEffect } from "react";
 
 function favorite() {
   //เข้าถึง store
-  const best = useSelector((state) => ({ ...state }));
+  const store = useSelector((state) => ({ ...state }));
   const [gamesdataList, setGamesdataList] = useState([]);
   const [gamesPriceList, setGamesPriceList] = useState([]);
   const [gamesTagsList, setgamesTagsList] = useState([]);
   const [userDataList, setUserDataList] = useState([]);
 
   useEffect(async () => {
-    await Axios.get("http://localhost:3001/gameprice/" + best.game, {}).then(
+    await Axios.get("http://localhost:3001/gameprice/" + store.game, {}).then(
       (response) => {
         setGamesdataList(response.data);
       }
@@ -25,7 +25,7 @@ function favorite() {
   }, []);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/priceList/" + best.game, {}).then(
+    Axios.get("http://localhost:3001/priceList/" + store.game, {}).then(
       (response) => {
         setGamesPriceList(response.data);
       }
@@ -33,7 +33,7 @@ function favorite() {
   }, []);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/tagsList/" + best.game, {}).then(
+    Axios.get("http://localhost:3001/tagsList/" + store.game, {}).then(
       (response) => {
         setgamesTagsList(response.data);
       }
@@ -41,14 +41,14 @@ function favorite() {
   }, []);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/gamecount/" + best.game, {}).then(
+    Axios.get("http://localhost:3001/gamecount/" + store.game, {}).then(
       (response) => {}
     );
   }, []);
 
   useEffect(() => {
-    if (best.user != null) {
-      Axios.get("http://localhost:3001/user/" + best.user, {}).then(
+    if (store.user != null) {
+      Axios.get("http://localhost:3001/user/" + store.user, {}).then(
         (response) => {
           setUserDataList(response.data);
         }
@@ -57,7 +57,7 @@ function favorite() {
   }, []);
 
   const addFavorite = () => {
-    if (best.user != null) {
+    if (store.user != null) {
       Axios.post("http://localhost:3001/getDataFavoriteGame/", {
         gameId: gamesdataList[0].game_id,
         userId: userDataList[0].user_id,

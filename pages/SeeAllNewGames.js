@@ -11,7 +11,7 @@ function SeeAllNewGames() {
   const ditpatch = useDispatch();
 
   //เข้าถึง store
-  const best = useSelector((state) => ({ ...state }));
+  const store = useSelector((state) => ({ ...state }));
   const [gamesNewDataList, setGamesNewDataList] = useState([]);
   useEffect(() => {
     Axios.get("http://localhost:3001/games_new_all").then((response) => {

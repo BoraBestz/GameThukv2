@@ -16,7 +16,7 @@ function login() {
   const ditpatch = useDispatch();
 
   //เข้าถึง store
-  const best = useSelector((state) => ({ ...state }));
+  const store = useSelector((state) => ({ ...state }));
 
   const login = () => {
     

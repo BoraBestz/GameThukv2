@@ -13,14 +13,14 @@ function favorite() {
   const [show, setShow] = useState(null);
 
   //เข้าถึง store
-  const best = useSelector((state) => ({ ...state }));
+  const store = useSelector((state) => ({ ...state }));
   const [gameFavoriteList, setGameFavoriteList] = useState([]);
   const [userDataList, setUserDataList] = useState([]);
   const [userNeedPrice, setUserNeedPrice] = useState("");
   
   const fetchData = () => {
-    if (best.user != null){
-       Axios.get("http://localhost:3001/favoriteGame/"+ best.userId, {
+    if (store.user != null){
+       Axios.get("http://localhost:3001/favoriteGame/"+ store.userId, {
         }).then((response) => {
             setGameFavoriteList(response.data);
         }); 
@@ -38,7 +38,7 @@ function favorite() {
       await Axios.post("http://localhost:3001/updatePriceNotifyGame/", {
         userNeedPrice: userNeedPrice,
         gameId: gameId,
-        userId: best.userId,
+        userId: store.userId,
         }).then((response) => {
             
         }); 
@@ -49,7 +49,7 @@ function favorite() {
     if (confirm("คุณต้องการเลิกติดตามเกม " + gameName +" ใช่หรือไม่") == true) {
       await Axios.post("http://localhost:3001/deleteFavoriteGame", {
       gameId: gameId,
-      userId: best.userId,
+      userId: store.userId,
     }).then((response) => {
       console.log(gameId)
     }); 

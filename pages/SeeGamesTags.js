@@ -11,14 +11,14 @@ function SeeGamesTags() {
   const ditpatch = useDispatch();
 
   //เข้าถึง store
-  const best = useSelector((state) => ({ ...state }));
+  const store = useSelector((state) => ({ ...state }));
   const [gamesTagDataList, setGamesTagDataList] = useState([]);
   const [gameTag, setGameTag] = useState("");
 
   useEffect(() => {
-    setGameTag(best.game);
+    setGameTag(store.game);
     if (gameTag != null) {
-      Axios.get("http://localhost:3001/gameTagSearch/" + best.game, {}).then(
+      Axios.get("http://localhost:3001/gameTagSearch/" + store.game, {}).then(
         (response) => {
           setGamesTagDataList(response.data);
         }
@@ -32,13 +32,12 @@ function SeeGamesTags() {
       payload: gameName,
     });
   };
-  console.log(best.game)
   return (
     <div className="">
       <Navbar />
       <div className="flex justify-center items-center flex-col pt-40 text-center lg:text-4xl text-5xl space-y-2">
         <PageTitle text="ผลการค้นหาแท็กเกม" />
-        <h2> {best.game} </h2>
+        <h2> {store.game} </h2>
       </div>
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">

@@ -13,12 +13,12 @@ function SearchGameList() {
   const ditpatch = useDispatch();
 
   //เข้าถึง store
-  const best = useSelector((state) => ({ ...state }));
+  const store = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    setgameName(best.game);
+    setgameName(store.game);
     if (gameName != null) {
-      Axios.get("http://localhost:3001/search/" + best.game, {}).then(
+      Axios.get("http://localhost:3001/search/" + store.game, {}).then(
         (response) => {
           setGamesdataList(response.data);
           console.log(gamesdataList);
@@ -40,7 +40,7 @@ function SearchGameList() {
       <Navbar />
       <div className="flex justify-center items-center flex-col pt-40 text-center lg:text-4xl text-5xl space-y-2">
         <PageTitle text="ผลการค้นหา!" />
-        <h2> {best.game} </h2>
+        <h2> {store.game} </h2>
       </div>
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
