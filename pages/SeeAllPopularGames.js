@@ -35,36 +35,39 @@ function SeeAllPopularGames() {
         <PageTitle text="เกมยอดนิยมทั้งหมด" />
       </div>
       <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        {gamesPopularDataList.map((val) => (
-          <Link href="/gameprice">
-            <div key={val.game_id} className="group relative">
-              <button onClick={() => goToGamePrice(val.game_name)}>
-                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 ">
-                  <img
-                    src={val.game_image}
-                    alt={val.game_image}
-                    className="w-full h-full object-center object-cover "
-                  />
-                </div>
-                <div className="mt-4 flex justify-between">
-                  <div>
-                    <h3 className="text-sm text-gray-700">
-                      <a href={val.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {val.game_name}
-                      </a>
-                    </h3>
+        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {gamesPopularDataList.map((val) => (
+            <Link href="/gameprice">
+              <div key={val.game_id} className="group relative">
+                <button onClick={() => goToGamePrice(val.game_name)}>
+                  <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 ">
+                    <img
+                      src={val.game_image}
+                      alt={val.game_image}
+                      className="w-full h-full object-center object-cover "
+                    />
                   </div>
-                  <p className="text-sm font-medium text-gray-900">
-                    ราคาถูกสุด {val.now_price} บาท
-                  </p>
-                </div>
-              </button>
-            </div>
-          </Link>
-        ))}
-      </div>
+                  <div className="mt-4 flex justify-between">
+                    <div>
+                      <h3 className="text-sm text-gray-700">
+                        <a href={val.href}>
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0"
+                          />
+                          {val.game_name}
+                        </a>
+                      </h3>
+                    </div>
+                    <p className="text-sm font-medium text-gray-900">
+                      ราคาถูกสุด {val.now_price} บาท
+                    </p>
+                  </div>
+                </button>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

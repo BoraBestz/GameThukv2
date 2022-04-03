@@ -56,7 +56,7 @@ function SeeGamesTags() {
                     <div>
                       <h3 className="text-sm text-gray-700">
                         <a href={val.href}>
-                        <span
+                          <span
                             aria-hidden="true"
                             className="absolute inset-0"
                           />

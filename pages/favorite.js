@@ -8,7 +8,6 @@ import { Carousel } from "react-responsive-carousel";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-
 function favorite() {
   const [show, setShow] = useState(null);
 
@@ -17,45 +16,46 @@ function favorite() {
   const [gameFavoriteList, setGameFavoriteList] = useState([]);
   const [userDataList, setUserDataList] = useState([]);
   const [userNeedPrice, setUserNeedPrice] = useState("");
-  
+
   const fetchData = () => {
-    if (store.user != null){
-       Axios.get("http://localhost:3001/favoriteGame/"+ store.userId, {
-        }).then((response) => {
-            setGameFavoriteList(response.data);
-        }); 
+    if (store.user != null) {
+      Axios.get("http://localhost:3001/favoriteGame/" + store.userId, {}).then(
+        (response) => {
+          setGameFavoriteList(response.data);
+        }
+      );
     }
-  }
+  };
 
   //auto fetchData if data change
   useEffect(() => {
     fetchData();
     if (fetchData.length) fetchData();
-    }, [fetchData]);
+  }, [fetchData]);
 
-  async function notifyPrice(userNeedPrice,gameId) {
-    if (userNeedPrice.length > 0){
+  async function notifyPrice(userNeedPrice, gameId) {
+    if (userNeedPrice.length > 0) {
       await Axios.post("http://localhost:3001/updatePriceNotifyGame/", {
         userNeedPrice: userNeedPrice,
         gameId: gameId,
         userId: store.userId,
-        }).then((response) => {
-            
-        }); 
+      }).then((response) => {});
     }
   }
 
-  async function  deleteFavoriteGame(gameId,gameName){
-    if (confirm("คุณต้องการเลิกติดตามเกม " + gameName +" ใช่หรือไม่") == true) {
+  async function deleteFavoriteGame(gameId, gameName) {
+    if (
+      confirm("คุณต้องการเลิกติดตามเกม " + gameName + " ใช่หรือไม่") == true
+    ) {
       await Axios.post("http://localhost:3001/deleteFavoriteGame", {
-      gameId: gameId,
-      userId: store.userId,
-    }).then((response) => {
-      console.log(gameId)
-    }); 
+        gameId: gameId,
+        userId: store.userId,
+      }).then((response) => {
+        console.log(gameId);
+      });
     }
   }
-  console.log(userNeedPrice)
+  console.log(userNeedPrice);
   return (
     <>
       <Navbar />
@@ -85,70 +85,75 @@ function favorite() {
             </thead>
             <tbody className="w-full">
               {/* -------------------------------------เริ่มแถว----------------------------------- */}
-            {gameFavoriteList.map((val) => (
-              <tr key={val.game_id} className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100">
-                <td className="pl-4 cursor-pointer">
-                  <div className="flex items-center">
-                    <div className="w-15 h-10 ">
-                      <img
-                        className="w-full h-full object-center object-cover"
-                        src={val.game_image}
-                      />
+              {gameFavoriteList.map((val) => (
+                <tr
+                  key={val.game_id}
+                  className="h-20 text-sm leading-none text-gray-800 bg-white hover:bg-gray-100 border-b border-t border-gray-100"
+                >
+                  <td className="pl-4 cursor-pointer">
+                    <div className="flex items-center">
+                      <div className="w-15 h-10 ">
+                        <img
+                          className="w-full h-full object-center object-cover"
+                          src={val.game_image}
+                        />
+                      </div>
+                      <div className="pl-4">
+                        <p className="font-medium">{val.game_name}</p>
+                      </div>
                     </div>
-                    <div className="pl-4">
-                      <p className="font-medium">{val.game_name}</p>
-                    </div>
-                  </div>
-                </td>
-                <td className="pl-12">
-                  <p className="text-sm font-medium leading-none text-gray-800">
-                  {val.lowest_price} <a className="font-medium text-gray-600 ml-2">บาท</a>
-                  </p>
-                </td>
-                <td className="pl-12 text-blue-600">
-                  <p className="font-medium">
-                    
-                    <a className="ml-2">{val.need_price}</a>
-                    <a className="font-medium text-gray-600 ml-2">บาท</a>
-                  </p>
-                </td>
-                <td className="pl-20">
-                  <p className="font-medium">
-                    <div className="">
-                      <input
-                        class=" ml-3 py-2.5 px-0 w-25 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer "
-                        placeholder=" "
-                        required
-                        onChange={(event) => {
-                          setUserNeedPrice(event.target.value)
-                        }}
-                      />
+                  </td>
+                  <td className="pl-12">
+                    <p className="text-sm font-medium leading-none text-gray-800">
+                      {val.lowest_price}{" "}
                       <a className="font-medium text-gray-600 ml-2">บาท</a>
+                    </p>
+                  </td>
+                  <td className="pl-12 text-blue-600">
+                    <p className="font-medium">
+                      <a className="ml-2">{val.need_price}</a>
+                      <a className="font-medium text-gray-600 ml-2">บาท</a>
+                    </p>
+                  </td>
+                  <td className="pl-20">
+                    <p className="font-medium">
+                      <div className="">
+                        <input
+                          class=" ml-3 py-2.5 px-0 w-25 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer "
+                          placeholder=" "
+                          required
+                          onChange={(event) => {
+                            setUserNeedPrice(event.target.value);
+                          }}
+                        />
+                        <a className="font-medium text-gray-600 ml-2">บาท</a>
 
-                      <button
-                        type="button"
-                        class="ml-5 py10 text-white bg-blue-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                        required
-                        onClick={() => {
-                          notifyPrice(userNeedPrice,val.game_id)
-                        }}
-                      >
-                        ยืนยัน
-                      </button>
-                    </div>
-                  </p>
-                </td>
-                <td className="pl-20">
-                  <button
-                    type="button"
-                    class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-                    onClick={() => deleteFavoriteGame(val.game_id,val.game_name)}
-                  >
-                    เลิกติดตาม
-                  </button>
-                </td>
-              </tr>
-            ))}
+                        <button
+                          type="button"
+                          class="ml-5 py10 text-white bg-blue-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                          required
+                          onClick={() => {
+                            notifyPrice(userNeedPrice, val.game_id);
+                          }}
+                        >
+                          ยืนยัน
+                        </button>
+                      </div>
+                    </p>
+                  </td>
+                  <td className="pl-20">
+                    <button
+                      type="button"
+                      class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                      onClick={() =>
+                        deleteFavoriteGame(val.game_id, val.game_name)
+                      }
+                    >
+                      เลิกติดตาม
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

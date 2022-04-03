@@ -40,314 +40,256 @@ function homepage() {
         payload: gameTag,
       });
     }
-    
   };
-  
+
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <div className="">
       <div class="flex flex-row min-h-screen bg-gray-100 text-gray-800">
-        <aside class="sidebar overflow-y-auto w-64 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-50 rounded dark:bg-gray-800 py-20">
+        <aside class="sidebar overflow-y-auto w-80 md:shadow transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in bg-gray-50 rounded dark:bg-gray-800 py-20">
           <div class="sidebar-content px-4 py-6 space-y-2">
             <ul class="flex flex-col w-full">
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("แอ็คชัน")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("แอ็คชัน");
+                    }}
                   >
-                    แอ็คชัน</button>
-                  {/* <div class="flex items-center justify-center h-6 px-2 rounded-full ml-auto">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class=""
-                      
-                      onChange={() => {
-                        setGameTag("แอ็คชัน")
-                      }}
-                    />
-                  </div> */}
-                </a>
+                    <button class="ml-3" type="button">
+                      แอ็คชัน
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("ผจญภัย")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("ผจญภัย");
+                    }}
                   >
-                    ผจญภัย</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      ผจญภัย
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("เกมสวมบทบาท")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("เกมสวมบทบาท");
+                    }}
                   >
-                    เกมสวมบทบาท</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      เกมสวมบทบาท
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("แคชชวล")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("แคชชวล");
+                    }}
                   >
-                    แคชชวล</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      แคชชวล
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("อินดี้")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("อินดี้");
+                    }}
                   >
-                    อินดี้</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      อินดี้
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("จำลองสถานการณ์")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("จำลองสถานการณ์");
+                    }}
                   >
-                    จำลองสถานการณ์</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      จำลองสถานการณ์
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("กีฬา")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("กีฬา");
+                    }}
                   >
-                    กีฬา</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      กีฬา
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("เล่นระหว่างพัฒนา")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("เล่นระหว่างพัฒนา");
+                    }}
                   >
-                    เล่นระหว่างพัฒนา</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      เล่นระหว่างพัฒนา
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("แข่งความเร็ว")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("แข่งความเร็ว");
+                    }}
                   >
-                    แข่งความเร็ว</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      แข่งความเร็ว
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("กลยุทธ์")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("กลยุทธ์");
+                    }}
                   >
-                    กลยุทธ์</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      กลยุทธ์
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("ผู้เล่นหลายคนจำนวนมาก")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("ผู้เล่นหลายคนจำนวนมาก");
+                    }}
                   >
-                    ผู้เล่นหลายคนจำนวนมาก</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      ผู้เล่นหลายคนจำนวนมาก
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("แอนิเมชันและการสร้างโมเดล")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("แอนิเมชันและการสร้างโมเดล");
+                    }}
                   >
-                    แอนิเมชันและการสร้างโมเดล</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      แอนิเมชันและการสร้างโมเดล
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("การออกแบบและภาพประกอบ")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("การออกแบบและภาพประกอบ");
+                    }}
                   >
-                    การออกแบบและภาพประกอบ</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      การออกแบบและภาพประกอบ
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("การแก้ไขรูปภาพ")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("การแก้ไขรูปภาพ");
+                    }}
                   >
-                    การแก้ไขรูปภาพ</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      การแก้ไขรูปภาพ
+                    </button>
+                  </a>
                 </Link>
-
               </li>
 
               <li class="my-px">
-              <Link href="/SeeGamesTags">
-                <a
-                  href="#"
-                  class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => {
-                    goToGameTags("ยูทิลิตี้")
-                  }}
-                >
-                  <button 
-                  class="ml-3"
-                  type="button"
+                <Link href="/SeeGamesTags">
+                  <a
+                    href="#"
+                    class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => {
+                      goToGameTags("ยูทิลิตี้");
+                    }}
                   >
-                    ยูทิลิตี้</button>
-                </a>
+                    <button class="ml-3" type="button">
+                      ยูทิลิตี้
+                    </button>
+                  </a>
                 </Link>
-
               </li>
-              
+
               <div className="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700"></div>
               {/* <Link href="SeeGamesTags">
               <button
@@ -415,8 +357,12 @@ function homepage() {
               <br></br>
               <div class=" flex flex-col gap-4 mt-50 w-80 mx-auto">
                 <Link href="SeeAllPopularGames">
-                  <button type="button" class="justify-center items-center rounded-md flex py-2.5 px-5 mr-2 mb-2 text-4l font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">ดูทั้งหมด <svg
-
+                  <button
+                    type="button"
+                    class="justify-center items-center rounded-md flex py-2.5 px-5 mr-2 mb-2 text-4l font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                  >
+                    ดูทั้งหมด{" "}
+                    <svg
                       class="w-4 h-4 ml-2"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -427,7 +373,8 @@ function homepage() {
                     >
                       <path d="M5 12h14"></path>
                       <path d="M12 5l7 7-7 7"></path>
-                    </svg></button>
+                    </svg>
+                  </button>
                 </Link>
               </div>
             </div>
@@ -472,8 +419,12 @@ function homepage() {
               <br></br>
               <div class=" flex flex-col gap-4 mt-50 w-80 mx-auto">
                 <Link href="SeeAllNewGames">
-                  <button type="button" class="justify-center items-center rounded-md flex py-2.5 px-5 mr-2 mb-2 text-4l font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">ดูทั้งหมด <svg
-
+                  <button
+                    type="button"
+                    class="justify-center items-center rounded-md flex py-2.5 px-5 mr-2 mb-2 text-4l font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                  >
+                    ดูทั้งหมด{" "}
+                    <svg
                       class="w-4 h-4 ml-2"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -484,7 +435,8 @@ function homepage() {
                     >
                       <path d="M5 12h14"></path>
                       <path d="M12 5l7 7-7 7"></path>
-                    </svg></button>
+                    </svg>
+                  </button>
                 </Link>
               </div>
             </div>

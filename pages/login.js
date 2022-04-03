@@ -19,7 +19,6 @@ function login() {
   const store = useSelector((state) => ({ ...state }));
 
   const login = () => {
-    
     if (email.length > 0 && password.length > 0) {
       Axios.post("http://localhost:3001/login", {
         username: username,
@@ -28,37 +27,35 @@ function login() {
       }).then((response) => {
         if (response.data.message) {
           setLoginStatus(response.data.message);
-          window.location.href = '/login';
+          window.location.href = "/login";
         } else {
           setLoginStatus(response.data[0].username);
 
           ditpatch({
             type: "LOGIN",
-            payload: response.data[0].username
+            payload: response.data[0].username,
           });
           ditpatch({
             type: "KEEPID",
-            payload: response.data[0].user_id
+            payload: response.data[0].user_id,
           });
-          
         }
       });
-      
     } else if (email.length == 0 && password.length > 0) {
       alert("กรุณากรอก email ");
-      window.location.href = '/login';
+      window.location.href = "/login";
     } else if (email.length > 0 && password.length == 0) {
       alert("กรุณากรอก password ");
-      window.location.href = '/login';
+      window.location.href = "/login";
     } else {
       alert("กรุณากรอก email และ password ");
-      window.location.href = '/login';
+      window.location.href = "/login";
     }
   };
-  
+
   return (
     <div className="h-screen flex bg-gray-bg1">
-      <Navbar/>
+      <Navbar />
 
       <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
         <h1 className="text-2xl font-medium text-primary mt-4 mb-12 text-center">
@@ -72,7 +69,7 @@ function login() {
               type="text"
               className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
               id="email"
-              placeholder="อีเมล์"
+              placeholder="อีเมล"
               onChange={(event) => {
                 setEmail(event.target.value);
               }}
@@ -91,23 +88,17 @@ function login() {
             />
           </div>
 
-          {/* <Link href="/"> */}
-
           <div className="flex justify-center items-center mt-6">
-          <Link href="/">
-            <button
-              type="button"
-              className={`bg-blue-600 py-2 px-6 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
-              onClick={login}
-            >
-              ยืนยัน
-            </button>
+            <Link href="/">
+              <button
+                type="button"
+                className={`bg-blue-600 py-2 px-6 text-sm text-white rounded border border-green focus:outline-none focus:border-green-dark`}
+                onClick={login}
+              >
+                ยืนยัน
+              </button>
             </Link>
-
           </div>
-          {/* </Link> */}
-
-          
 
           <Link href="/register">
             <div className="text-right mt-1">

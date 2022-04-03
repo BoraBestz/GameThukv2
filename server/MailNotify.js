@@ -1,4 +1,3 @@
-
 // main.js
 const nodemailer = require("nodemailer");
 const express = require("express");
@@ -27,8 +26,8 @@ db.query(
       const gameName = result[0].game_name;
       const gamePrice = result[0].lowest_price;
       const gameUrl = result[0].market_url;
-      for (i in result){
-        console.log("index: "+i)
+      for (i in result) {
+        console.log("index: " + i);
         if (email != null) {
           // setup mail transporter service
           const transporter = nodemailer.createTransport({
@@ -38,15 +37,23 @@ db.query(
               pass: "GameThuk55!", // your password
             },
           });
-  
+
           // setup email data with unicode symbols
           const mailOptions = {
             from: '"GameThuk 🎮" <gamethukbot@gmail.com>', // sender
             to: result[i].email, // list of receivers
             subject: "มีเกมที่คุณติดตามกำลังลดราคาอยู่!", // Mail subject
-            html: "<b>เกม "+result[i].game_name+" กำลังลดราคาเหลือ "+result[i].lowest_price+" บาท"+"</b>"+ "<br> ซื้อเลยที่เว็บ: "+result[i].market_url, // HTML body
+            html:
+              "<b>เกม " +
+              result[i].game_name +
+              " กำลังลดราคาเหลือ " +
+              result[i].lowest_price +
+              " บาท" +
+              "</b>" +
+              "<br> ซื้อเลยที่เว็บ: " +
+              result[i].market_url, // HTML body
           };
-  
+
           // send mail with defined transport object
           transporter.sendMail(mailOptions, function (err, info) {
             if (err) console.log(err);

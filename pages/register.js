@@ -22,7 +22,7 @@ function register() {
       Axios.get("http://localhost:3001/checkRegister/" + email, {}).then(
         (response) => {
           if (response.data.message) {
-            alert("มีอีเมล์ซ้ำอยู่ในระบบ กรุณากรอกใหม่อีกครั้ง");
+            alert("มีอีเมลซ้ำอยู่ในระบบ กรุณากรอกใหม่อีกครั้ง");
           } else if (response.data.length == 0) {
             Axios.post("http://localhost:3001/register", {
               username: username,

@@ -31,8 +31,8 @@ function SeeAllNewGames() {
       <Navbar />
       <div className="flex justify-center items-center flex-col pt-40 text-center lg:text-4xl text-5xl space-y-2">
         <PageTitle text="เกมใหม่ล่าสุดทั้งหมด" />
-        </div>
-        <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      </div>
+      <div class="lg:w-4/5 mx-auto flex flex-wrap">
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {gamesNewDataList.map((val) => (
             <Link href="/gameprice">
@@ -49,7 +49,7 @@ function SeeAllNewGames() {
                     <div>
                       <h3 className="text-sm text-gray-700">
                         <a href={val.href}>
-                        <span
+                          <span
                             aria-hidden="true"
                             className="absolute inset-0"
                           />

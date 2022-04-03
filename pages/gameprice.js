@@ -77,8 +77,7 @@ function favorite() {
       // } else {
       //   alert("คุณได้ติดตามเกม" + gamesdataList[0].game_name);
       // }
-    }
-    else{
+    } else {
       alert("กรุณาเข้าสู่ระบบก่อน");
       window.location.href = "/login";
     }
