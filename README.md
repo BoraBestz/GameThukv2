@@ -3,7 +3,7 @@
 **University Final Year Project**  
 Project Title: GameThuk v2 — A Web-Based Game Aggregator and Tracker
 
-Author: Panupong Sornwiriya (BoraBestz)  
+Author: Panupong Sornwiriya (BoraBestz), Tammawat (tammawatRa)  
 Department: [Computer Science]  
 University: [Kasetsart University]  
 Academic Year: 2022
