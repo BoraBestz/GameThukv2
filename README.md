@@ -1,7 +1,7 @@
-# GameThuk v2 🎮
+# GameThuk 🎮
 
 **University Final Year Project**  
-Project Title: GameThuk v2 — A Web-Based Game Aggregator and Tracker
+Project Title: GameThuk — A Web-Based Game Aggregator and Tracker
 
 Author: Panupong Sornwiriya (BoraBestz), Tammawat (tammawatRa)  
 Department: [Computer Science]  
@@ -12,7 +12,7 @@ Academic Year: 2022
 
 ## 1. Introduction
 
-GameThuk v2 is a web application designed to aggregate and track video game information from multiple online sources. Utilizing web scraping techniques implemented in Python, it collects and processes game data which is then served via a REST API. The frontend, built with Next.js and Tailwind CSS, provides a responsive and user-friendly interface for browsing game details.
+GameThuk  is a web application designed to aggregate and track video game information from multiple online sources. Utilizing web scraping techniques implemented in Python, it collects and processes game data which is then served via a REST API. The frontend, built with Next.js and Tailwind CSS, provides a responsive and user-friendly interface for browsing game details.
 
 The main goal of this project is to develop an automated system that helps gamers easily search, explore, and stay updated with the latest game releases and reviews all in one place.
 
@@ -68,8 +68,8 @@ The system is composed of three main parts:
 
 ### Steps
 
-it clone https://github.com/BoraBestz/GameThukv2.git
-cd GameThukv2/server
+it clone https://github.com/BoraBestz/GameThuk.git
+cd GameThuk/server
 
 # Set up Python environment
 python -m venv venv
